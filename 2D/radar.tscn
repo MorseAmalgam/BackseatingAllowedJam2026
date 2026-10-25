@@ -1,12 +1,52 @@
 [gd_scene format=3 uid="uid://2mgugamg0umr"]
 
 [ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://2D/radar.gd" id="1_buqxs"]
+[ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
 
 [node name="WindowRadar" type="Window" unique_id=826591826]
+transparent_bg = true
 oversampling_override = 1.0
 title = "Radar Readout"
-position = Vector2i(0, 17)
-size = Vector2i(600, 600)
+position = Vector2i(0, 36)
+size = Vector2i(300, 300)
 borderless = true
 always_on_top = true
+transparent = true
 script = ExtResource("1_buqxs")
+
+[node name="Field" type="Node2D" parent="." unique_id=1298864904]
+
+[node name="Ground" type="Sprite2D" parent="Field" unique_id=1689364443]
+centered = false
+
+[node name="Icon" type="Sprite2D" parent="Field" unique_id=1647159180]
+modulate = Color(1, 0.110000014, 0.110000014, 1)
+position = Vector2(315, 274)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_leo8i")
+
+[node name="Icon2" type="Sprite2D" parent="Field" unique_id=1664043817]
+modulate = Color(1, 0.110000014, 0.110000014, 1)
+position = Vector2(853, 582)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_leo8i")
+
+[node name="Icon3" type="Sprite2D" parent="Field" unique_id=2035155792]
+modulate = Color(1, 0.110000014, 0.110000014, 1)
+position = Vector2(1434, 344)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_leo8i")
+
+[node name="Frame" type="Line2D" parent="." unique_id=867193727]
+points = PackedVector2Array(0, 0, 300, 0, 300, 300, 0, 300)
+closed = true
+width = 12.0
+default_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+
+[node name="CoordinateIndicator" type="Label" parent="." unique_id=1833712146]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2087824967]
+offset_right = 40.0
+offset_bottom = 40.0

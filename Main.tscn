@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://blmhj3j00yk45" path="res://addons/twitcher/eventsub/twitch_eventsub.gd" id="10_5vvyt"]
 [ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="12_c6i3y"]
 [ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://2D/radar.tscn" id="14_c2ibq"]
+[ext_resource type="PackedScene" uid="uid://bygsh4mabm5sy" path="res://2D/world.tscn" id="14_j4qnp"]
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("3_20pc6")
@@ -22,6 +23,9 @@ metadata/_custom_type_script = "uid://b3n3et8mebjcc"
 
 [sub_resource type="Resource" id="Resource_c6i3y"]
 script = ExtResource("9_20pc6")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t2dwb"]
+viewport_path = NodePath("WorldViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq22k"]
 content_margin_left = 32.0
@@ -97,16 +101,34 @@ command = "help"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
+[node name="WindowRadar" parent="." unique_id=826591826 instance=ExtResource("14_c2ibq")]
+
 [node name="Code" type="Node" parent="." unique_id=1672627357 node_paths=PackedStringArray("send_message_button", "redeem_label")]
 script = ExtResource("1_5vvyt")
 send_message_button = NodePath("../UI/HBox/Margin/VBox/SendMessage")
 redeem_label = NodePath("../UI/HBox/Margin/VBox/Redeem")
 
+[node name="WorldViewport" type="SubViewport" parent="." unique_id=1367705997]
+canvas_cull_mask = 4294966273
+size = Vector2i(1280, 720)
+
+[node name="World" parent="WorldViewport" unique_id=1439204650 instance=ExtResource("14_j4qnp")]
+visibility_layer = 1023
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=284389386]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_t2dwb")
+
 [node name="UI" type="PanelContainer" parent="." unique_id=238622140]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -7273.0
+offset_bottom = 7273.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dq22k")
@@ -158,7 +180,5 @@ layout_mode = 2
 text = "Redeem the \"Godot Game Redeem\" to change this label!
 (This will work even if you're not streaming.)"
 horizontal_alignment = 1
-
-[node name="WindowRadar" parent="." unique_id=826591826 instance=ExtResource("14_c2ibq")]
 
 [connection signal="command_received" from="TwitchService/TwitchCommand" to="Code" method="_on_twitch_command_command_received"]

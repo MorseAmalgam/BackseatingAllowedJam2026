@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bygsh4mabm5sy"]
+
+[ext_resource type="Texture2D" uid="uid://bhr2fy2yduwih" path="res://assets/textures/ground.png" id="1_lv8qc"]
+[ext_resource type="PackedScene" uid="uid://c40qextvqeo7l" path="res://2D/vessel.tscn" id="2_lv8qc"]
+
+[node name="World" type="Node2D" unique_id=1439204650]
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=1480442902]
+position = Vector2(952, 641)
+texture = ExtResource("1_lv8qc")
+
+[node name="Vessel" parent="." unique_id=1181753356 instance=ExtResource("2_lv8qc")]
+position = Vector2(952, 641)

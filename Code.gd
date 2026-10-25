@@ -33,6 +33,9 @@ func _ready() -> void:
 	# Connect the button!
 	send_message_button.pressed.connect(send_message_button_pressed);
 
+	# TODO: Set up the texture copying proper
+	$"../WindowRadar/Field/Ground".texture = $"../TextureRect".texture
+	
 # ---
 
 # Called in _ready if Twitch connects successfully!
