@@ -7,11 +7,6 @@
 [ext_resource type="Script" uid="uid://fmtyexdlsy0x" path="res://addons/twitcher/example/game_template/twitcher_devicecode.gd" id="6_iotsf"]
 [ext_resource type="Resource" uid="uid://ddrqchmiend4e" path="res://addons/twitcher/example/game_template/game_template_oauth_token.tres" id="7_lc2xo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lhtpo"]
-font_size = 40
-shadow_color = Color(0.16, 0.16, 0.16, 1)
-shadow_offset = Vector2(5, 5)
-
 [node name="Game" type="Control" unique_id=2099273273]
 layout_mode = 3
 anchors_preset = 15
@@ -33,14 +28,10 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -242.5
+offset_top = 243.0
 offset_right = 242.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="GameTitle" type="Label" parent="MainMenu" unique_id=1732885542]
-layout_mode = 2
-text = "My awesome new game!"
-label_settings = SubResource("LabelSettings_lhtpo")
 
 [node name="Play" type="Button" parent="MainMenu" unique_id=379007583]
 layout_mode = 2
@@ -65,5 +56,4 @@ text = "Status: Disconnected"
 
 [node name="Exit" type="Button" parent="MainMenu" unique_id=1222572742]
 layout_mode = 2
-disabled = true
 text = "Exit"

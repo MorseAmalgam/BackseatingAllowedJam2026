@@ -16,6 +16,7 @@ extends Node
 # Called when scene is ready.
 # Please note this node MUST be listed after TwitchService in the scene tree.
 func _ready() -> void:
+	
 	# Connect to Twitch! 
 	var success: bool = await TwitchService.instance.setup();
 
@@ -33,9 +34,7 @@ func _ready() -> void:
 	# Connect the button!
 	send_message_button.pressed.connect(send_message_button_pressed);
 
-	# TODO: Set up the texture copying proper
-	$"../WindowRadar/Field/Ground".texture = $"../TextureRect".texture
-	
+
 # ---
 
 # Called in _ready if Twitch connects successfully!
@@ -55,7 +54,6 @@ func print_your_name() -> void:
 
 # Register commands users can run by typing !COMMAND in chat.
 func register_command() -> void:
-	TwitchService.instance._log.set_enabled(true)
 	TwitchService.instance.add_command("info", on_info_command);
 
 func on_info_command(_from_username: String, _info: TwitchCommandInfo, _args: PackedStringArray) -> void:
@@ -69,8 +67,11 @@ func connect_to_greenheat()->void:
 	var current_user: TwitchUser = await TwitchService.instance.get_current_user();
 	if current_user == null:
 		return
-		
-	print("Greenheat address is wss://heat.prod.kr/%s " % current_user.login);
+	
+	var greenheat = GreenHeat.new()
+	greenheat.channel_name = current_user.login
+	greenheat.detecting = true
+	get_parent().add_child(greenheat)
 
 
 # ---
