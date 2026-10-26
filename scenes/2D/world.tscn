@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bygsh4mabm5sy"]
 
 [ext_resource type="Texture2D" uid="uid://bhr2fy2yduwih" path="res://assets/textures/ground.png" id="1_lv8qc"]
-[ext_resource type="Script" uid="uid://cnf0nj8x5a06w" path="res://2D/world.gd" id="1_lvx6v"]
-[ext_resource type="PackedScene" uid="uid://c40qextvqeo7l" path="res://2D/vessel.tscn" id="2_lv8qc"]
-[ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://2D/radar.tscn" id="5_sdurb"]
+[ext_resource type="Script" uid="uid://cnf0nj8x5a06w" path="res://scenes/2D/world.gd" id="1_lvx6v"]
+[ext_resource type="PackedScene" uid="uid://c40qextvqeo7l" path="res://scenes/2D/vessel.tscn" id="2_lv8qc"]
+[ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://scenes/2D/radar.tscn" id="5_sdurb"]
 
 [node name="World" type="Node2D" unique_id=1439204650]
 script = ExtResource("1_lvx6v")

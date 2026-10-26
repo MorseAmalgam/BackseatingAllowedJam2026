@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://syfdx4y1kdfi"]
+
+[ext_resource type="Script" uid="uid://c75vlwbwwtgv6" path="res://scenes/main.gd" id="1_jbj1t"]
+[ext_resource type="Script" uid="uid://i8st3lv0lidh" path="res://addons/twitcher/twitch_service.gd" id="1_jkv2x"]
+[ext_resource type="Resource" uid="uid://crasl2nmnjveo" path="res://twitch_oauth_setting.tres" id="2_jbj1t"]
+[ext_resource type="Script" uid="uid://b3n3et8mebjcc" path="res://addons/twitcher/auth/twitch_oauth_scopes.gd" id="3_muem4"]
+[ext_resource type="Resource" uid="uid://dbybhyrt4o2no" path="res://twitch_oauth_token.tres" id="4_dp3eg"]
+[ext_resource type="Script" uid="uid://cw30cwveway65" path="res://addons/twitcher/generated/twitch_api.gd" id="5_0ld40"]
+[ext_resource type="Script" uid="uid://iv0mgv0lu8b0" path="res://addons/twitcher/auth/twitch_auth.gd" id="6_gqmmt"]
+[ext_resource type="Script" uid="uid://bf0wi70haua35" path="res://addons/twitcher/lib/oOuch/oauth.gd" id="7_yc10j"]
+[ext_resource type="Script" uid="uid://blnbogtrshw4r" path="res://addons/twitcher/auth/twitch_token_handler.gd" id="8_jscy8"]
+[ext_resource type="Script" uid="uid://wkh0l2xsyapj" path="res://addons/twitcher/irc/twitch_irc.gd" id="9_pm3ni"]
+[ext_resource type="Script" uid="uid://c8mv0lq0a2l8f" path="res://addons/twitcher/irc/twitch_irc_setting.gd" id="10_y6deb"]
+[ext_resource type="Script" uid="uid://blmhj3j00yk45" path="res://addons/twitcher/eventsub/twitch_eventsub.gd" id="11_og1vs"]
+[ext_resource type="Script" uid="uid://bmluckfvgm1c2" path="res://addons/twitcher/chat/twitch_command.gd" id="12_2wyq8"]
+[ext_resource type="Script" uid="uid://cedio6qnbpte" path="res://Code.gd" id="13_vxglm"]
+[ext_resource type="PackedScene" uid="uid://ciej31t77dv2x" path="res://scenes/control/title_screen.tscn" id="15_yq6so"]
+[ext_resource type="PackedScene" uid="uid://dai2m18txbsl7" path="res://scenes/control/menu.tscn" id="16_jbj1t"]
+
+[sub_resource type="Resource" id="Resource_c2ibq"]
+script = ExtResource("3_muem4")
+used_scopes = Array[StringName]([&"chat:edit", &"chat:read", &"user:read:chat", &"user:write:chat", &"channel:bot", &"moderator:manage:chat_messages", &"user:bot"])
+metadata/_custom_type_script = "uid://b3n3et8mebjcc"
+
+[sub_resource type="Resource" id="Resource_c6i3y"]
+script = ExtResource("10_y6deb")
+
+[node name="Main" type="Control" unique_id=1498018400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbj1t")
+
+[node name="TwitchService" type="Node" parent="." unique_id=1998140980]
+script = ExtResource("1_jkv2x")
+oauth_setting = ExtResource("2_jbj1t")
+scopes = SubResource("Resource_c2ibq")
+token = ExtResource("4_dp3eg")
+metadata/_custom_type_script = "uid://i8st3lv0lidh"
+
+[node name="TwitchAPI" type="Node" parent="TwitchService" unique_id=26979406]
+script = ExtResource("5_0ld40")
+token = ExtResource("4_dp3eg")
+oauth_setting = ExtResource("2_jbj1t")
+metadata/_custom_type_script = "uid://cw30cwveway65"
+
+[node name="TwitchAuth" type="Node" parent="TwitchService" unique_id=213156178]
+script = ExtResource("6_gqmmt")
+oauth_setting = ExtResource("2_jbj1t")
+token = ExtResource("4_dp3eg")
+scopes = SubResource("Resource_c2ibq")
+metadata/_custom_type_script = "uid://iv0mgv0lu8b0"
+
+[node name="OAuth" type="Node" parent="TwitchService/TwitchAuth" unique_id=909819071 node_paths=PackedStringArray("token_handler")]
+script = ExtResource("7_yc10j")
+oauth_setting = ExtResource("2_jbj1t")
+scopes = SubResource("Resource_c2ibq")
+token_handler = NodePath("../TokenHandler")
+
+[node name="TokenHandler" type="Node" parent="TwitchService/TwitchAuth" unique_id=377617757]
+script = ExtResource("8_jscy8")
+oauth_setting = ExtResource("2_jbj1t")
+token = ExtResource("4_dp3eg")
+
+[node name="TwitchIRC" type="Node" parent="TwitchService" unique_id=1025705381]
+script = ExtResource("9_pm3ni")
+setting = SubResource("Resource_c6i3y")
+token = ExtResource("4_dp3eg")
+metadata/_custom_type_script = "uid://wkh0l2xsyapj"
+
+[node name="TwitchEventsub" type="Node" parent="TwitchService" unique_id=1819469950 node_paths=PackedStringArray("api")]
+script = ExtResource("11_og1vs")
+api = NodePath("../TwitchAPI")
+metadata/_custom_type_script = "uid://blmhj3j00yk45"
+
+[node name="TwitchCommand" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+command = "help"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Code" type="Node" parent="." unique_id=1672627357]
+script = ExtResource("13_vxglm")
+
+[node name="ActiveScene" type="Node2D" parent="." unique_id=1994042938]
+
+[node name="TitleScreen" parent="ActiveScene" unique_id=97575940 instance=ExtResource("15_yq6so")]
+anchors_preset = 15
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Menu" parent="." unique_id=278147680 instance=ExtResource("16_jbj1t")]
+visible = false
+layout_mode = 1
+
+[connection signal="command_received" from="TwitchService/TwitchCommand" to="Code" method="_on_twitch_command_command_received"]

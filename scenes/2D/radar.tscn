@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2mgugamg0umr"]
 
-[ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://2D/radar.gd" id="1_buqxs"]
+[ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://scenes/2D/radar.gd" id="1_buqxs"]
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
 
 [node name="RadarWindow" type="Window" unique_id=826591826]
@@ -11,6 +11,7 @@ oversampling_override = 1.0
 title = "Radar Readout"
 position = Vector2i(0, 36)
 size = Vector2i(300, 300)
+unresizable = true
 borderless = true
 always_on_top = true
 transparent = true

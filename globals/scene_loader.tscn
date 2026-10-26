@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://di2y866in25sg"]
+
+[ext_resource type="Script" uid="uid://cb38n54tm5y7c" path="res://globals/scene_loader.gd" id="1_2otee"]
+[ext_resource type="Shader" uid="uid://byw4gd27w1ju1" path="res://resources/shaders/static.gdshader" id="2_2otee"]
+
+[sub_resource type="Animation" id="Animation_hs3jj"]
+resource_name = "FadeIn"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/lightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7, 0.89, 0.7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/alpha_cutoff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_tlobq"]
+resource_name = "FadeOut"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/lightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.89, 0.7, 0.7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/alpha_cutoff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.08333333, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i7g2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/lightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/alpha_cutoff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tlobq"]
+_data = {
+&"FadeIn": SubResource("Animation_hs3jj"),
+&"FadeOut": SubResource("Animation_tlobq"),
+&"RESET": SubResource("Animation_i7g2s")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2dwb"]
+shader = ExtResource("2_2otee")
+shader_parameter/pixelize_amount = 256.0
+shader_parameter/lightness = 0.7
+shader_parameter/alpha_cutoff = 0.0
+
+[node name="SceneLoader" type="Node2D" unique_id=2020132553]
+script = ExtResource("1_2otee")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1876256462]
+libraries/ = SubResource("AnimationLibrary_tlobq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=40431235]
+modulate = Color(1, 1, 1, 0)
+z_index = 1000
+z_as_relative = false
+material = SubResource("ShaderMaterial_t2dwb")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1981533138]

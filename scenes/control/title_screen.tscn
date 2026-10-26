@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ciej31t77dv2x"]
 
-[ext_resource type="Script" uid="uid://cpe1thdov6wiy" path="res://control/title_screen.gd" id="1_a5uwb"]
+[ext_resource type="Script" uid="uid://cpe1thdov6wiy" path="res://scenes/control/title_screen.gd" id="1_a5uwb"]
 [ext_resource type="Resource" uid="uid://dbybhyrt4o2no" path="res://twitch_oauth_token.tres" id="2_nrjsf"]
 
 [sub_resource type="Gradient" id="Gradient_nrjsf"]
@@ -17,8 +17,8 @@ fill_to = Vector2(0.8913044, 1)
 bg_color = Color(0.52, 0.44962665, 0.2184, 1)
 
 [node name="TitleScreen" type="Control" unique_id=97575940]
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -130,4 +130,5 @@ grow_vertical = 2
 alignment = 1
 editable = false
 
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]

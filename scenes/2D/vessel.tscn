@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c40qextvqeo7l"]
 
-[ext_resource type="Script" uid="uid://dov8uppq6fd6r" path="res://2D/vessel.gd" id="1_jnm0n"]
+[ext_resource type="Script" uid="uid://dov8uppq6fd6r" path="res://scenes/2D/vessel.gd" id="1_jnm0n"]
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_urh05"]
 
 [node name="Vessel" type="Node2D" unique_id=1181753356]
