@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cupgid58skdja"]
+
+[ext_resource type="Shader" uid="uid://cqe1hvorh3416" path="res://resources/shaders/heat_signature.gdshader" id="1_4jdds"]
+[ext_resource type="Texture2D" uid="uid://dscfndhwiilfb" path="res://assets/textures/gradient_circle.png" id="1_j8jew"]
+
+[sub_resource type="Gradient" id="Gradient_tnt1p"]
+offsets = PackedFloat32Array(0.41791046, 0.5298507, 0.7164179, 0.82835823, 1)
+colors = PackedColorArray(0, 0.25882354, 0.69803923, 1, 0.015686275, 0.68235296, 0.34509805, 1, 1, 0.98039216, 0.101960786, 1, 1, 0.5019608, 0.050980393, 1, 1, 0.21568628, 0.015686275, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnt1p"]
+gradient = SubResource("Gradient_tnt1p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m3gn"]
+shader = ExtResource("1_4jdds")
+shader_parameter/color_lut = SubResource("GradientTexture1D_tnt1p")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
+radius = 50.0
+
+[node name="HeatCreature" type="Node2D" unique_id=511157504]
+visibility_layer = 8
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
+visibility_layer = 8
+material = SubResource("ShaderMaterial_4m3gn")
+
+[node name="GradientCircle" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
+position = Vector2(-0.15860468, 8.957697)
+rotation = -3.1160486
+scale = Vector2(0.3028325, 0.41324395)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle2" type="Sprite2D" parent="CanvasGroup" unique_id=1539352227]
+position = Vector2(-30, -3.999998)
+rotation = -1.2834527
+scale = Vector2(0.10211384, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle7" type="Sprite2D" parent="CanvasGroup" unique_id=770635218]
+position = Vector2(-44, -15.000004)
+rotation = -2.068851
+scale = Vector2(0.13303928, 0.09375001)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle8" type="Sprite2D" parent="CanvasGroup" unique_id=316018694]
+position = Vector2(-45, -30.999996)
+rotation = -2.068851
+scale = Vector2(0.13303928, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle3" type="Sprite2D" parent="CanvasGroup" unique_id=1916356948]
+position = Vector2(28.999996, -7.000001)
+rotation = -1.8070515
+scale = Vector2(0.09242831, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle9" type="Sprite2D" parent="CanvasGroup" unique_id=1683934950]
+position = Vector2(44.999996, -16.999998)
+rotation = -2.068851
+scale = Vector2(0.078124985, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle10" type="Sprite2D" parent="CanvasGroup" unique_id=2063471457]
+position = Vector2(47, -28.999992)
+rotation = -2.068851
+scale = Vector2(0.13303928, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle4" type="Sprite2D" parent="CanvasGroup" unique_id=1992394871]
+position = Vector2(16, 36)
+rotation = -2.068851
+scale = Vector2(0.13303928, 0.09374997)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle11" type="Sprite2D" parent="CanvasGroup" unique_id=45024812]
+position = Vector2(21, 51)
+rotation = -1.5452522
+scale = Vector2(0.13303928, 0.09759551)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle12" type="Sprite2D" parent="CanvasGroup" unique_id=743730199]
+position = Vector2(29.000004, 61.000008)
+rotation = -1.5452522
+scale = Vector2(0.09200727, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle5" type="Sprite2D" parent="CanvasGroup" unique_id=1046378774]
+position = Vector2(-19, 35)
+rotation = -2.59245
+scale = Vector2(0.08205004, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle13" type="Sprite2D" parent="CanvasGroup" unique_id=1458476426]
+position = Vector2(-25, 47.999996)
+rotation = -1.7528702
+scale = Vector2(0.18799059, 0.09386336)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle14" type="Sprite2D" parent="CanvasGroup" unique_id=14443358]
+position = Vector2(-31.999996, 62.000008)
+rotation = -2.068851
+scale = Vector2(0.08995715, 0.13303928)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle6" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
+position = Vector2(0, -34)
+rotation = -3.1160486
+scale = Vector2(0.21371318, 0.2578125)
+texture = ExtResource("1_j8jew")
+
+[node name="GradientCircle15" type="Sprite2D" parent="CanvasGroup" unique_id=1057384286]
+position = Vector2(0.99999976, -10.000002)
+rotation = -3.1160486
+scale = Vector2(0.074323684, 0.16610868)
+texture = ExtResource("1_j8jew")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1496338513]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820379432]
+shape = SubResource("CircleShape2D_t2dwb")

@@ -3,7 +3,7 @@ extends Window
 enum Scans {
 	MOTION = 1,
 	INFRARED = 2,
-	SEISMIC = 3,
+	VIBRATION = 3,
 	HEAT = 4
 }
 
@@ -23,18 +23,11 @@ func check_held_changed(mouse_state:bool)->bool:
 
 
 func _process(_delta: float) -> void:
+	# Mouse drag for sensor array
 	if get_focused_window() == self && check_held_changed(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) && is_held:
 		click_point = get_viewport().get_mouse_position()
 	
-	if Input.is_action_just_pressed("hotbar_1"):
-		_update_scan_indicators(Scans.MOTION)
-	elif Input.is_action_just_pressed("hotbar_2"):
-		_update_scan_indicators(Scans.INFRARED)
-	elif Input.is_action_just_pressed("hotbar_3"):
-		_update_scan_indicators(Scans.SEISMIC)
-	elif Input.is_action_just_pressed("hotbar_4"):
-		_update_scan_indicators(Scans.HEAT)
-	
+	# Update the window position if we're dragging it
 	if is_held:
 		position = DisplayServer.mouse_get_position() - click_point
 	
@@ -45,6 +38,25 @@ func _process(_delta: float) -> void:
 		$ScannerUI/CoordinateIndicator.text = "TRIANGULATING..."
 		$TriangulationTimer.start()
 	
+	# STOP HERE if the game is paused - screen movement is only for the purposes of getting it out of the way
+	if get_tree().paused:
+		return
+	
+	if Input.is_action_just_pressed("hotbar_1") && ProgressManager.sensor_progression.has("Motion"):
+		_update_scan_indicators(Scans.MOTION)
+	elif Input.is_action_just_pressed("hotbar_2") && ProgressManager.sensor_progression.has("Infrared"):
+		_update_scan_indicators(Scans.INFRARED)
+	elif Input.is_action_just_pressed("hotbar_3") && ProgressManager.sensor_progression.has("Vibration"):
+		_update_scan_indicators(Scans.VIBRATION)
+	elif Input.is_action_just_pressed("hotbar_4") && ProgressManager.sensor_progression.has("Heat"):
+		_update_scan_indicators(Scans.HEAT)
+
+
+func activate() -> void:
+	visible = true
+	
+	# TODO: Soft-enable sensor indicators
+	pass
 
 
 func _update_scan_indicators(active:int)->void:

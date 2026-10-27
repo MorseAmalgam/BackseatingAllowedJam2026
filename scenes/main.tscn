@@ -76,8 +76,37 @@ script = ExtResource("11_og1vs")
 api = NodePath("../TwitchAPI")
 metadata/_custom_type_script = "uid://blmhj3j00yk45"
 
-[node name="TwitchCommand" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
+[node name="Flak" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
+args_min = 2
+command = "flak"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Laser" type="Node" parent="TwitchService" unique_id=920506259 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+args_min = 2
+command = "help"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Bunker" type="Node" parent="TwitchService" unique_id=1743567360 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+args_min = 2
+command = "help"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Thumper" type="Node" parent="TwitchService" unique_id=1979630370 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+args_min = 2
+command = "help"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="Flare" type="Node" parent="TwitchService" unique_id=800747038 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+args_min = 2
 command = "help"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
@@ -95,5 +124,3 @@ offset_bottom = 720.0
 [node name="Menu" parent="." unique_id=278147680 instance=ExtResource("16_jbj1t")]
 visible = false
 layout_mode = 1
-
-[connection signal="command_received" from="TwitchService/TwitchCommand" to="Code" method="_on_twitch_command_command_received"]

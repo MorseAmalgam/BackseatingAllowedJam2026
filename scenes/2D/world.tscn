@@ -9,6 +9,7 @@
 script = ExtResource("1_lvx6v")
 
 [node name="RadarWindow" parent="." unique_id=826591826 instance=ExtResource("5_sdurb")]
+visible = false
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=1480442902]
 position = Vector2(952, 641)

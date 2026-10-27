@@ -1,20 +1,30 @@
+class_name Vessel
 extends Node2D
 
 
-var velocity:float = 80
-var rotation_speed:float = 0.05
+var max_velocity:float = 900
+
+var acceleration:float = 900
+var velocity:Vector2 = Vector2.ZERO
+var friction:float = 0.95
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_up"):
-		position += Vector2.UP.rotated(rotation) * velocity * delta
-	elif Input.is_action_pressed("ui_down"):
-		position -= Vector2.UP.rotated(rotation) * (velocity * 0.75) * delta
 	
-	# Rotation
+	var added_velocity:Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
-		rotate(-rotation_speed)
-		pass
+		added_velocity += Vector2.LEFT
 	elif Input.is_action_pressed("ui_right"):
-		rotate(rotation_speed)
-		pass
+		added_velocity += Vector2.RIGHT
+
+	if Input.is_action_pressed("ui_up"):
+		added_velocity += Vector2.UP
+	elif Input.is_action_pressed("ui_down"):
+		added_velocity += Vector2.DOWN
+	
+	
+	velocity += added_velocity.normalized() * acceleration * delta
+	velocity.limit_length(max_velocity)
+	
+	position += velocity * delta
+	velocity *= friction
 	pass

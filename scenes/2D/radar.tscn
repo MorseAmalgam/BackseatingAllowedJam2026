@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://scenes/2D/radar.gd" id="1_buqxs"]
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
+[ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="2_vupku"]
 
 [node name="RadarWindow" type="Window" unique_id=826591826]
+process_mode = 3
 disable_3d = true
 transparent_bg = true
 canvas_cull_mask = 4294966273
@@ -19,6 +21,10 @@ script = ExtResource("1_buqxs")
 
 [node name="Field" type="Node2D" parent="." unique_id=1298864904]
 visibility_layer = 31
+
+[node name="HeatCreature" parent="Field" unique_id=511157504 instance=ExtResource("2_vupku")]
+position = Vector2(1176, 426)
+rotation = -0.17321159
 
 [node name="Icon" type="Sprite2D" parent="Field" unique_id=1647159180]
 modulate = Color(1, 0.110000014, 0.110000014, 1)
@@ -125,6 +131,11 @@ offset_bottom = 40.0
 color = Color(0.49411765, 0, 1, 1)
 
 [node name="TriangulationTimer" type="Timer" parent="." unique_id=1417830798]
+process_mode = 1
 wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725095385]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=4887998]
 
 [connection signal="timeout" from="TriangulationTimer" to="." method="_on_triangulation_timer_timeout"]
