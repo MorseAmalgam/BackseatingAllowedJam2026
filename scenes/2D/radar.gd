@@ -4,7 +4,7 @@ enum Scans {
 	MOTION = 1,
 	INFRARED = 2,
 	VIBRATION = 3,
-	HEAT = 4
+	THERMAL = 4
 }
 
 
@@ -48,8 +48,8 @@ func _process(_delta: float) -> void:
 		_update_scan_indicators(Scans.INFRARED)
 	elif Input.is_action_just_pressed("hotbar_3") && ProgressManager.sensor_progression.has("Vibration"):
 		_update_scan_indicators(Scans.VIBRATION)
-	elif Input.is_action_just_pressed("hotbar_4") && ProgressManager.sensor_progression.has("Heat"):
-		_update_scan_indicators(Scans.HEAT)
+	elif Input.is_action_just_pressed("hotbar_4") && ProgressManager.sensor_progression.has("Thermal"):
+		_update_scan_indicators(Scans.THERMAL)
 
 
 func activate() -> void:

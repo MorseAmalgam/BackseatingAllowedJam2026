@@ -93,7 +93,7 @@ hotbar_4={
 2d_render/layer_2="Motion Sensor"
 2d_render/layer_3="Infrared Sensor"
 2d_render/layer_4="Vibration Sensor"
-2d_render/layer_5="Heat Sensor"
+2d_render/layer_5="Thermal Sensor"
 
 [physics]
 

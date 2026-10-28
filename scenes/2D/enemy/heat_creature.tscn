@@ -18,10 +18,10 @@ shader_parameter/color_lut = SubResource("GradientTexture1D_tnt1p")
 radius = 50.0
 
 [node name="HeatCreature" type="Node2D" unique_id=511157504]
-visibility_layer = 8
+visibility_layer = 16
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
-visibility_layer = 8
+visibility_layer = 16
 material = SubResource("ShaderMaterial_4m3gn")
 
 [node name="GradientCircle" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
