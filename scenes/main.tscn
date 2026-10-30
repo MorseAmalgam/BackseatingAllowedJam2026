@@ -80,6 +80,7 @@ metadata/_custom_type_script = "uid://blmhj3j00yk45"
 [node name="Flak" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
+args_max = 2
 command = "flak"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
@@ -87,28 +88,40 @@ metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 [node name="Laser" type="Node" parent="TwitchService" unique_id=920506259 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
-command = "help"
+args_max = 2
+command = "laser"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
 [node name="Bunker" type="Node" parent="TwitchService" unique_id=1743567360 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
-command = "help"
+args_max = 2
+command = "bunker"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
 [node name="Thumper" type="Node" parent="TwitchService" unique_id=1979630370 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
-command = "help"
+args_max = 2
+command = "thumper"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
 [node name="Flare" type="Node" parent="TwitchService" unique_id=800747038 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
-command = "help"
+args_max = 2
+command = "flare"
+eventsub = NodePath("../TwitchEventsub")
+metadata/_custom_type_script = "uid://bmluckfvgm1c2"
+
+[node name="ExtractionVerify" type="Node" parent="TwitchService" unique_id=1953945448 node_paths=PackedStringArray("eventsub")]
+script = ExtResource("12_2wyq8")
+args_min = 1
+args_max = 1
+command = "verify"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
