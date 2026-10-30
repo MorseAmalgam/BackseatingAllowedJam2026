@@ -94,7 +94,6 @@ texture = ExtResource("4_27ale")
 expand_mode = 3
 
 [node name="Field" type="Node2D" parent="." unique_id=1298864904]
-clip_children = 2
 visibility_layer = 31
 
 [node name="HeatCreature" parent="Field" unique_id=511157504 instance=ExtResource("2_vupku")]
@@ -111,7 +110,7 @@ texture = ExtResource("2_leo8i")
 [node name="Icon2" type="Sprite2D" parent="Field" unique_id=1664043817]
 modulate = Color(1, 0.110000014, 0.110000014, 1)
 visibility_layer = 2
-position = Vector2(853, 582)
+position = Vector2(851, 713)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_leo8i")
 

@@ -80,5 +80,5 @@ func _on_triangulation_timer_timeout() -> void:
 		Vector2(DisplayServer.window_get_position_with_decorations(0)) + 
 		Vector2(DisplayServer.window_get_size(1) / 2.0)
 		)
-	$Camera2D/ScannerUI/CoordinateIndicator.text = "RGN: <%s, %s>" % [pos.x, pos.y]
+	$Camera2D/ScannerUI/CoordinateIndicator.text = "RGN: <%d, %d>" % [pos.x, pos.y]
 	pass
