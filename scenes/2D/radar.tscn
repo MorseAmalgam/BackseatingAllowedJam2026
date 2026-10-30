@@ -23,6 +23,8 @@ script = ExtResource("1_buqxs")
 anchor_mode = 0
 
 [node name="ScannerUI" type="Control" parent="Camera2D" unique_id=1788107614]
+z_index = 50
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -92,6 +94,7 @@ texture = ExtResource("4_27ale")
 expand_mode = 3
 
 [node name="Field" type="Node2D" parent="." unique_id=1298864904]
+clip_children = 2
 visibility_layer = 31
 
 [node name="HeatCreature" parent="Field" unique_id=511157504 instance=ExtResource("2_vupku")]
@@ -143,7 +146,7 @@ texture = ExtResource("2_leo8i")
 [node name="Icon7" type="Sprite2D" parent="Field" unique_id=1289685066]
 modulate = Color(0, 0, 1, 1)
 visibility_layer = 4
-position = Vector2(148, 489)
+position = Vector2(3, 532)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_leo8i")
 

@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://scenes/2D/radar.tscn" id="5_sdurb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t2dwb"]
-vertices = PackedVector2Array(1881.6172, -182.02344, 2343, 46.203125, 2343, 858.53125, 2107.7266, 1309.2891, 1570.7578, 1549.0391, 711.21094, 1568.9609, -151.35938, 1336.9609, -284.72656, 647.3906, -69.24219, -140.42969, 834.1719, -191.99219)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)])
+vertices = PackedVector2Array(739.9297, 508.39063, 744.09375, 18.460938, 834.1719, -191.99219, 1881.6172, -182.02344, 2343, 46.203125, 2343, 858.53125, 2107.7266, 1309.2891, 1570.7578, 1549.0391, -69.24219, -140.42969, 533.64844, 29.53125, 711.21094, 1568.9609, -151.35938, 1336.9609, 552.4297, 541.8672, -284.72656, 647.3906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 2, 1, 9), PackedInt32Array(0, 7, 10, 11, 12), PackedInt32Array(12, 11, 13, 8, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-77, -150, 834, -202, 1884, -192, 2353, 40, 2353, 861, 2115, 1317, 1573, 1559, 710, 1579, -160, 1345, -295, 647)])
 
 [node name="World" type="Node2D" unique_id=1439204650]
@@ -17,14 +17,18 @@ script = ExtResource("1_lvx6v")
 visible = false
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=1480442902]
-position = Vector2(952, 641)
+position = Vector2(638.5, 432)
+scale = Vector2(0.6734375, 0.6734375)
 texture = ExtResource("1_lv8qc")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=220804953]
 navigation_polygon = SubResource("NavigationPolygon_t2dwb")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=1000335789]
-vertices = PackedVector2Array(235, 64, 331, 88, 337, 160, 238, 222, 186, 135)
+radius = 70.18
+vertices = PackedVector2Array(544, 39, 734, 29, 730, 500, 562, 530)
+affect_navigation_mesh = true
+avoidance_enabled = false
 
 [node name="Vessel" parent="." unique_id=1181753356 instance=ExtResource("2_lv8qc")]
 position = Vector2(952, 641)

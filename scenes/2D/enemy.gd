@@ -42,8 +42,10 @@ func _process(delta: float) -> void:
 
 	var movement_target_position:Vector2 = navigation_agent.get_next_path_position()
 	var movement_delta = movement_speed * delta
-	global_position.direction_to(movement_target_position) * movement_delta
-	#look_at(target.position - get_parent().position)
+	var adjusted_target_position = movement_target_position - get_parent().position
+	var new_velocity = global_position.direction_to(adjusted_target_position) * movement_delta
+	look_at(adjusted_target_position)
+	global_position = global_position.move_toward(global_position + new_velocity, movement_delta)
 	#position.x += 5 * delta
 
 
