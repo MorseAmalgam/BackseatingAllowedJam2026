@@ -35,12 +35,14 @@ func navigate_to_screen(scene_path:String) -> void:
 
 func show_mission_complete() -> void:
 	menu_enabled = false
+	get_tree().paused = true
 	$MissionComplete.visible = true
 	pass
 
 
 func show_mission_failed() -> void:
 	menu_enabled = false
+	get_tree().paused = true
 	$MissionFailed.visible = true
 	pass
 
