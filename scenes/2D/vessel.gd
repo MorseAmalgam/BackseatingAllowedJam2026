@@ -27,4 +27,17 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	velocity *= friction
+	
 	pass
+
+
+func take_damage(amount:float) -> void:
+	current_health -= amount
+	if current_health <= 0:
+		$DestroyedAudioPlayer.play()
+		$AnimationPlayer.play("Die")
+		await $AnimationPlayer.animation_finished
+		queue_free()
+	else:
+		$DamageAudioPlayer.play()
+		
