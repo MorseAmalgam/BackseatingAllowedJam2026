@@ -155,3 +155,4 @@ autostart = true
 [node name="AttackCooldownTimer" type="Timer" parent="." unique_id=168949374]
 
 [connection signal="timeout" from="RecalculateNavTimer" to="." method="_on_recalculate_nav_timer"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer"]

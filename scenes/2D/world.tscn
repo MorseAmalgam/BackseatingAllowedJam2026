@@ -2,8 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://bhr2fy2yduwih" path="res://assets/textures/ground.png" id="1_lv8qc"]
 [ext_resource type="Script" uid="uid://cnf0nj8x5a06w" path="res://scenes/2D/world.gd" id="1_lvx6v"]
+[ext_resource type="Script" uid="uid://be5mxpw18ci7a" path="res://resources/objective.gd" id="2_h0unw"]
 [ext_resource type="PackedScene" uid="uid://c40qextvqeo7l" path="res://scenes/2D/vessel.tscn" id="2_lv8qc"]
+[ext_resource type="Script" uid="uid://ciug3p0k1h3fd" path="res://resources/objective/timer.gd" id="3_lo0i8"]
+[ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="5_myeq5"]
 [ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://scenes/2D/radar.tscn" id="5_sdurb"]
+
+[sub_resource type="Resource" id="Resource_h0unw"]
+script = ExtResource("3_lo0i8")
+custom_message = "Chicken nuggets will be ready in"
+metadata/_custom_type_script = "uid://ciug3p0k1h3fd"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_arqi5"]
 light_mode = 2
@@ -14,7 +22,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), Pa
 outlines = Array[PackedVector2Array]([PackedVector2Array(-77, -150, 834, -202, 1884, -192, 2353, 40, 2353, 861, 2115, 1317, 1573, 1559, 710, 1579, -160, 1345, -295, 647)])
 
 [node name="World" type="Node2D" unique_id=1439204650]
+process_mode = 1
 script = ExtResource("1_lvx6v")
+objectives = Array[ExtResource("2_h0unw")]([SubResource("Resource_h0unw")])
 
 [node name="UnlitGround" type="Sprite2D" parent="." unique_id=1809586489]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -43,3 +53,28 @@ avoidance_enabled = false
 
 [node name="Vessel" parent="." unique_id=1181753356 instance=ExtResource("2_lv8qc")]
 position = Vector2(952, 641)
+
+[node name="UI" type="Control" parent="." unique_id=933209287]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MissionObjectivesHeader" type="Label" parent="UI" unique_id=806432059]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 278.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("5_myeq5")
+theme_override_font_sizes/font_size = 20
+text = "MISSION OBJECTIVES:"
+
+[node name="MissionObjectivesList" type="RichTextLabel" parent="UI" unique_id=2031896703]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 600.0
+offset_bottom = 163.0
+theme_override_fonts/normal_font = ExtResource("5_myeq5")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
