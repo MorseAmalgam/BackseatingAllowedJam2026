@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c40qextvqeo7l"]
 
 [ext_resource type="Script" uid="uid://dov8uppq6fd6r" path="res://scenes/2D/vessel.gd" id="1_jnm0n"]
+[ext_resource type="Texture2D" uid="uid://dscfndhwiilfb" path="res://assets/textures/gradient_circle.png" id="2_oqtt7"]
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_urh05"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
@@ -9,8 +10,14 @@ radius = 37.5
 [node name="Vessel" type="Node2D" unique_id=1181753356]
 script = ExtResource("1_jnm0n")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1953196910]
+color = Color(0, 0, 0, 1)
+texture = ExtResource("2_oqtt7")
+texture_scale = 0.75
+
 [node name="Icon" type="Sprite2D" parent="." unique_id=2042755846]
 modulate = Color(0.050000012, 1, 0.1291666, 1)
+light_mask = 0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_urh05")
 
