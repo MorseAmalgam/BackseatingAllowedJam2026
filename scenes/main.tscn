@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://cedio6qnbpte" path="res://Code.gd" id="13_vxglm"]
 [ext_resource type="PackedScene" uid="uid://ciej31t77dv2x" path="res://scenes/control/title_screen.tscn" id="15_yq6so"]
 [ext_resource type="PackedScene" uid="uid://dai2m18txbsl7" path="res://scenes/control/menu.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://c47vf3csq3tot" path="res://scenes/control/mission_complete.tscn" id="17_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://crrpbgwot4tku" path="res://scenes/control/mission_failed.tscn" id="18_0ld40"]
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("3_muem4")
@@ -135,5 +137,13 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="Menu" parent="." unique_id=278147680 instance=ExtResource("16_jbj1t")]
+visible = false
+layout_mode = 1
+
+[node name="MissionComplete" parent="." unique_id=1069275250 instance=ExtResource("17_dp3eg")]
+visible = false
+layout_mode = 1
+
+[node name="MissionFailed" parent="." unique_id=1952879490 instance=ExtResource("18_0ld40")]
 visible = false
 layout_mode = 1

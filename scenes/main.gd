@@ -4,8 +4,9 @@ extends Node
 var menu_enabled:bool = false
 const InterfaceScreens:Dictionary = {
 	TITLE = "res://scenes/control/title_screen.tscn",
-	MAP = "res://scenes/control/map.tscn"
+	MAP = "res://scenes/control/map.tscn",
 }
+
 
 func _ready() -> void:
 	# Prep our SceneLoader
@@ -31,6 +32,17 @@ func navigate_to_screen(scene_path:String) -> void:
 	# Toggle pause so we can process the scene change.
 	toggle_pause()
 	SceneLoader.change_scene(scene_path)
+
+func show_mission_complete() -> void:
+	menu_enabled = false
+	$MissionComplete.visible = true
+	pass
+
+
+func show_mission_failed() -> void:
+	menu_enabled = false
+	$MissionFailed.visible = true
+	pass
 
 
 func toggle_pause() -> void:

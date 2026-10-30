@@ -1,7 +1,7 @@
 extends Control
 
 
-func _on_restart_level_button_pressed() -> void:
+func _on_retry_level_button_pressed() -> void:
 	pass # Replace with function body.
 
 
