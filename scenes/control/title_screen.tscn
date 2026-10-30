@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpe1thdov6wiy" path="res://scenes/control/title_screen.gd" id="1_a5uwb"]
 [ext_resource type="Resource" uid="uid://dbybhyrt4o2no" path="res://twitch_oauth_token.tres" id="2_nrjsf"]
+[ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="3_drqhl"]
 
 [sub_resource type="Gradient" id="Gradient_nrjsf"]
 colors = PackedColorArray(0.3647059, 0.39607844, 0.19607843, 1, 0.21665812, 0.23721334, 0.10515887, 1)
@@ -19,6 +20,7 @@ bg_color = Color(0.52, 0.44962665, 0.2184, 1)
 [node name="TitleScreen" type="Control" unique_id=97575940]
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -34,11 +36,12 @@ texture = SubResource("GradientTexture2D_t2dwb")
 
 [node name="Label" type="Label" parent="." unique_id=85500924]
 layout_mode = 0
-offset_left = 369.0
-offset_top = 143.0
-offset_right = 908.0
-offset_bottom = 231.0
+offset_left = 203.99998
+offset_top = 149.0
+offset_right = 1044.0
+offset_bottom = 237.0
 rotation = -0.11028302
+theme_override_fonts/font = ExtResource("3_drqhl")
 theme_override_font_sizes/font_size = 64
 text = "Wow! Such game!"
 
@@ -59,6 +62,7 @@ grow_vertical = 2
 [node name="StartGameButton" type="Button" parent="VBoxContainer" unique_id=636068639]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_drqhl")
 disabled = true
 text = "Start Game
 "
@@ -66,6 +70,7 @@ text = "Start Game
 [node name="Exit Button" type="Button" parent="VBoxContainer" unique_id=781231832]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_drqhl")
 text = "Exit Game
 "
 
@@ -77,39 +82,62 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = 43.0
-offset_right = 350.0
-offset_bottom = 243.0
+offset_left = -637.0
+offset_top = 22.0
+offset_right = 637.0
+offset_bottom = 222.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="VerificationUI" unique_id=1649108999]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 701.0
-offset_bottom = 202.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -622.0
+offset_top = -100.0
+offset_right = 622.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrjsf")
 
 [node name="Label2" type="Label" parent="VerificationUI" unique_id=488854171]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 14.0
-offset_right = 673.0
-offset_bottom = 89.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -602.0
+offset_top = -87.0
+offset_right = 602.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_drqhl")
 text = "To get started, you'll need to connect your Twitch account to the app. 
-Copy the link or click the button below and authorize the application in your brower. 
+Copy the link or click the button below and authorize the application in your brower.
 This window will disappear when it's connected!"
 horizontal_alignment = 1
 
 [node name="OpenBrowserButton" type="Button" parent="VerificationUI" unique_id=609635958]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 24.0
-offset_top = 143.0
-offset_right = 665.0
-offset_bottom = 184.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.5
+offset_top = 41.0
+offset_right = 320.5
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_drqhl")
 disabled = true
 text = "Open Link In Browser"
 
@@ -121,12 +149,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -326.0
-offset_top = -5.0
-offset_right = 314.0
-offset_bottom = 37.0
+offset_left = -320.0
+offset_top = -9.0
+offset_right = 320.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_drqhl")
 alignment = 1
 editable = false
 

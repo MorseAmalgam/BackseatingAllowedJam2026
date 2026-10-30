@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://g8sq2rl5c0cu"]
+
+[ext_resource type="Script" uid="uid://dhf323m8soxs1" path="res://scenes/2D/weapon/thumper_weapon.gd" id="1_suc6f"]
+
+[node name="Thumper" type="Node2D" unique_id=1357789251]
+script = ExtResource("1_suc6f")

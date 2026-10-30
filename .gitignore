@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+twitch_oauth_setting.tres
+twitch_oauth_token.tres

@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://csbn2pcdne0xm"]
+
+[ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="1_7fkfk"]
+[ext_resource type="Script" uid="uid://jxi7f5vrxu6i" path="res://scenes/2D/weapon/flak_weapon.gd" id="1_fj1tm"]
+[ext_resource type="AudioStream" uid="uid://m6hosjova8p2" path="res://assets/audio/temp/snd_explosion.wav" id="2_iiofe"]
+
+[sub_resource type="Animation" id="Animation_iiofe"]
+resource_name = "Fire"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lsqhv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ProgressBar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lsqhv"]
+_data = {
+&"Fire": SubResource("Animation_iiofe"),
+&"RESET": SubResource("Animation_lsqhv")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2dwb"]
+bg_color = Color(0, 0.46, 0.0076666595, 0.5764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2va7"]
+bg_color = Color(0.16078432, 1, 0.1764706, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
+radius = 20.0
+
+[node name="Flak" type="Node2D" unique_id=487617637]
+script = ExtResource("1_fj1tm")
+deploy_speed = 2.0
+fire_sound = ExtResource("2_iiofe")
+damage_type = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1039010484]
+libraries/ = SubResource("AnimationLibrary_lsqhv")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1727550960]
+offset_left = -12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_t2dwb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m2va7")
+max_value = 1.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606916875]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.15873016, 0.15873015)
+texture = ExtResource("1_7fkfk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=590783421]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=814348165]
+shape = SubResource("CircleShape2D_t2dwb")

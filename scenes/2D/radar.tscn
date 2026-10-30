@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://scenes/2D/radar.gd" id="1_buqxs"]
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
 [ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="2_vupku"]
+[ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="4_27ale"]
 
 [node name="RadarWindow" type="Window" unique_id=826591826]
 process_mode = 3
@@ -11,13 +12,84 @@ transparent_bg = true
 canvas_cull_mask = 4294966273
 oversampling_override = 1.0
 title = "Radar Readout"
-position = Vector2i(0, 36)
 size = Vector2i(300, 300)
 unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
 script = ExtResource("1_buqxs")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=740746238]
+anchor_mode = 0
+
+[node name="ScannerUI" type="Control" parent="Camera2D" unique_id=1788107614]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/ScannerUI" unique_id=601042448]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 34.0
+color = Color(0, 0, 0, 1)
+
+[node name="Frame" type="Line2D" parent="Camera2D/ScannerUI" unique_id=867193727]
+points = PackedVector2Array(2, 2, 300, 2, 300, 300, 2, 300)
+closed = true
+width = 12.0
+default_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+
+[node name="CoordinateIndicator" type="Label" parent="Camera2D/ScannerUI" unique_id=1833712146]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 165.0
+offset_bottom = 28.0
+text = "COORDS: <312, 297>"
+
+[node name="ScanIndicators" type="Control" parent="Camera2D/ScannerUI" unique_id=1110287100]
+anchors_preset = 0
+offset_left = 141.0
+offset_top = 260.0
+offset_right = 181.0
+offset_bottom = 300.0
+
+[node name="Motion" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=2087824967]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="Infrared" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=526538378]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)
+
+[node name="Seismic" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=2013575919]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 120.0
+offset_bottom = 40.0
+color = Color(0, 1, 0, 1)
+
+[node name="Heat" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=1744427499]
+layout_mode = 0
+offset_left = 119.0
+offset_right = 159.0
+offset_bottom = 40.0
+color = Color(0.49411765, 0, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ScannerUI" unique_id=1492552617]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 125.0
+offset_right = 175.0
+offset_bottom = 175.0
+texture = ExtResource("4_27ale")
+expand_mode = 3
 
 [node name="Field" type="Node2D" parent="." unique_id=1298864904]
 visibility_layer = 31
@@ -75,64 +147,10 @@ position = Vector2(148, 489)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_leo8i")
 
-[node name="ScannerUI" type="Control" parent="." unique_id=1788107614]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Frame" type="Line2D" parent="ScannerUI" unique_id=867193727]
-points = PackedVector2Array(2, 2, 300, 2, 300, 300, 2, 300)
-closed = true
-width = 12.0
-default_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
-
-[node name="CoordinateIndicator" type="Label" parent="ScannerUI" unique_id=1833712146]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="ScanIndicators" type="Control" parent="ScannerUI" unique_id=1110287100]
-anchors_preset = 0
-offset_left = 141.0
-offset_top = 260.0
-offset_right = 181.0
-offset_bottom = 300.0
-
-[node name="Motion" type="ColorRect" parent="ScannerUI/ScanIndicators" unique_id=2087824967]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
-
-[node name="Infrared" type="ColorRect" parent="ScannerUI/ScanIndicators" unique_id=526538378]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 40.0
-color = Color(0, 0, 1, 1)
-
-[node name="Seismic" type="ColorRect" parent="ScannerUI/ScanIndicators" unique_id=2013575919]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 80.0
-offset_right = 120.0
-offset_bottom = 40.0
-color = Color(0, 1, 0, 1)
-
-[node name="Heat" type="ColorRect" parent="ScannerUI/ScanIndicators" unique_id=1744427499]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 119.0
-offset_right = 159.0
-offset_bottom = 40.0
-color = Color(0.49411765, 0, 1, 1)
-
 [node name="TriangulationTimer" type="Timer" parent="." unique_id=1417830798]
 process_mode = 1
 wait_time = 0.5
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725095385]
 

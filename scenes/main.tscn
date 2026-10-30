@@ -117,7 +117,6 @@ script = ExtResource("13_vxglm")
 [node name="ActiveScene" type="Node2D" parent="." unique_id=1994042938]
 
 [node name="TitleScreen" parent="ActiveScene" unique_id=97575940 instance=ExtResource("15_yq6so")]
-anchors_preset = 15
 offset_right = 1280.0
 offset_bottom = 720.0
 

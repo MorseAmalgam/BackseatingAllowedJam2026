@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b4x8re8l7cn2u"]
+
+[ext_resource type="Script" uid="uid://db0q5o7bj7xsn" path="res://scenes/2D/weapon/flare_weapon.gd" id="1_olw4q"]
+
+[node name="Flare" type="Node2D" unique_id=215144250]
+script = ExtResource("1_olw4q")

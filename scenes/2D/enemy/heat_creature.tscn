@@ -1,121 +1,150 @@
 [gd_scene format=3 uid="uid://cupgid58skdja"]
 
-[ext_resource type="Shader" uid="uid://cqe1hvorh3416" path="res://resources/shaders/heat_signature.gdshader" id="1_4jdds"]
-[ext_resource type="Texture2D" uid="uid://dscfndhwiilfb" path="res://assets/textures/gradient_circle.png" id="1_j8jew"]
-
-[sub_resource type="Gradient" id="Gradient_tnt1p"]
-offsets = PackedFloat32Array(0.41791046, 0.5298507, 0.7164179, 0.82835823, 1)
-colors = PackedColorArray(0, 0.25882354, 0.69803923, 1, 0.015686275, 0.68235296, 0.34509805, 1, 1, 0.98039216, 0.101960786, 1, 1, 0.5019608, 0.050980393, 1, 1, 0.21568628, 0.015686275, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnt1p"]
-gradient = SubResource("Gradient_tnt1p")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m3gn"]
-shader = ExtResource("1_4jdds")
-shader_parameter/color_lut = SubResource("GradientTexture1D_tnt1p")
+[ext_resource type="Script" uid="uid://b1ewj5hi6s4aq" path="res://scenes/2D/enemy.gd" id="1_tnt1p"]
+[ext_resource type="Material" uid="uid://cpvjju1mqbg1h" path="res://resources/thermal_imaging.tres" id="2_2xs52"]
+[ext_resource type="Texture2D" uid="uid://d1eqmjl128vnh" path="res://assets/textures/temp/heatbeast_body.png" id="3_kur5f"]
+[ext_resource type="Texture2D" uid="uid://1tbrxp5ug6t2" path="res://assets/textures/temp/heatbeast_upper_arm.png" id="4_oia7a"]
+[ext_resource type="AudioStream" uid="uid://b04crvcruuk1m" path="res://assets/audio/temp/imp death 2.wav" id="4_tnt1p"]
+[ext_resource type="Texture2D" uid="uid://bkj7memqvf5xt" path="res://assets/textures/temp/heatbeast_lower_arm.png" id="5_2xs52"]
+[ext_resource type="Texture2D" uid="uid://b4dyyktcs7ar6" path="res://assets/textures/temp/heatbeast_hand.png" id="6_a84w5"]
+[ext_resource type="Texture2D" uid="uid://dunlchnwt5i12" path="res://assets/textures/temp/heatbeast_upper_leg.png" id="7_2xs52"]
+[ext_resource type="Texture2D" uid="uid://dxx0d5007ias2" path="res://assets/textures/temp/heatbeast_lower_leg.png" id="8_a84w5"]
+[ext_resource type="Texture2D" uid="uid://dll5kx0wh1vc4" path="res://assets/textures/temp/heatbeast_head.png" id="8_wmwab"]
+[ext_resource type="Texture2D" uid="uid://065l1nlbl1w5" path="res://assets/textures/temp/heatbeast_foot.png" id="9_wmwab"]
+[ext_resource type="Texture2D" uid="uid://c3ysodbd2axgl" path="res://assets/textures/temp/heatbeast_tail01.png" id="9_xcgvg"]
+[ext_resource type="Texture2D" uid="uid://bcpjvf7jipu0x" path="res://assets/textures/temp/heatbeast_tail02.png" id="10_632xl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
 radius = 50.0
 
+[sub_resource type="Animation" id="Animation_4m3gn"]
+resource_name = "Die"
+length = 4.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2spnw"]
+_data = {
+&"Die": SubResource("Animation_4m3gn")
+}
+
 [node name="HeatCreature" type="Node2D" unique_id=511157504]
+process_mode = 1
 visibility_layer = 16
+script = ExtResource("1_tnt1p")
+affected_by = 1
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
 visibility_layer = 16
-material = SubResource("ShaderMaterial_4m3gn")
+material = ExtResource("2_2xs52")
+rotation = 1.5707964
 
-[node name="GradientCircle" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
-position = Vector2(-0.15860468, 8.957697)
-rotation = -3.1160486
-scale = Vector2(0.3028325, 0.41324395)
-texture = ExtResource("1_j8jew")
+[node name="Body" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
+position = Vector2(-0.21245325, 2.457697)
+texture = ExtResource("3_kur5f")
 
-[node name="GradientCircle2" type="Sprite2D" parent="CanvasGroup" unique_id=1539352227]
-position = Vector2(-30, -3.999998)
-rotation = -1.2834527
-scale = Vector2(0.10211384, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="LeftUpperArm" type="Sprite2D" parent="CanvasGroup" unique_id=1539352227]
+position = Vector2(-12.999999, -9.999999)
+rotation = -0.0006053448
+texture = ExtResource("4_oia7a")
 
-[node name="GradientCircle7" type="Sprite2D" parent="CanvasGroup" unique_id=770635218]
-position = Vector2(-44, -15.000004)
-rotation = -2.068851
-scale = Vector2(0.13303928, 0.09375001)
-texture = ExtResource("1_j8jew")
+[node name="LeftLowerArm" type="Sprite2D" parent="CanvasGroup" unique_id=770635218]
+position = Vector2(-20.053846, -17.5)
+rotation = -0.5235988
+texture = ExtResource("5_2xs52")
 
-[node name="GradientCircle8" type="Sprite2D" parent="CanvasGroup" unique_id=316018694]
-position = Vector2(-45, -30.999996)
-rotation = -2.068851
-scale = Vector2(0.13303928, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="LeftHand" type="Sprite2D" parent="CanvasGroup" unique_id=316018694]
+position = Vector2(-22.05385, -26.499998)
+rotation = 0.01799488
+texture = ExtResource("6_a84w5")
 
-[node name="GradientCircle3" type="Sprite2D" parent="CanvasGroup" unique_id=1916356948]
-position = Vector2(28.999996, -7.000001)
-rotation = -1.8070515
-scale = Vector2(0.09242831, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="RightUpperArm" type="Sprite2D" parent="CanvasGroup" unique_id=1916356948]
+position = Vector2(12.946152, -14.5)
+rotation = -0.33630413
+scale = Vector2(-1, 1)
+texture = ExtResource("4_oia7a")
 
-[node name="GradientCircle9" type="Sprite2D" parent="CanvasGroup" unique_id=1683934950]
-position = Vector2(44.999996, -16.999998)
-rotation = -2.068851
-scale = Vector2(0.078124985, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="RightLowerArm" type="Sprite2D" parent="CanvasGroup" unique_id=1683934950]
+position = Vector2(17.946154, -25.499998)
+rotation = 0.28610134
+scale = Vector2(-1, 1)
+texture = ExtResource("5_2xs52")
 
-[node name="GradientCircle10" type="Sprite2D" parent="CanvasGroup" unique_id=2063471457]
-position = Vector2(47, -28.999992)
-rotation = -2.068851
-scale = Vector2(0.13303928, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="RightHand" type="Sprite2D" parent="CanvasGroup" unique_id=2063471457]
+position = Vector2(18.94615, -34.5)
+rotation = 0.018177032
+scale = Vector2(-1, 1)
+texture = ExtResource("6_a84w5")
 
-[node name="GradientCircle4" type="Sprite2D" parent="CanvasGroup" unique_id=1992394871]
-position = Vector2(16, 36)
-rotation = -2.068851
-scale = Vector2(0.13303928, 0.09374997)
-texture = ExtResource("1_j8jew")
+[node name="RightUpperLeg" type="Sprite2D" parent="CanvasGroup" unique_id=1992394871]
+position = Vector2(14.946153, 14.5)
+rotation = -1.8325958
+scale = Vector2(-1, 1)
+texture = ExtResource("7_2xs52")
 
-[node name="GradientCircle11" type="Sprite2D" parent="CanvasGroup" unique_id=45024812]
-position = Vector2(21, 51)
-rotation = -1.5452522
-scale = Vector2(0.13303928, 0.09759551)
-texture = ExtResource("1_j8jew")
+[node name="RightLowerLeg" type="Sprite2D" parent="CanvasGroup" unique_id=45024812]
+position = Vector2(19.946154, 25.5)
+rotation = -5.640313
+scale = Vector2(-1, 1)
+texture = ExtResource("8_a84w5")
 
-[node name="GradientCircle12" type="Sprite2D" parent="CanvasGroup" unique_id=743730199]
-position = Vector2(29.000004, 61.000008)
-rotation = -1.5452522
-scale = Vector2(0.09200727, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="RightFoot" type="Sprite2D" parent="CanvasGroup" unique_id=743730199]
+position = Vector2(16.946154, 37.5)
+rotation = -4.351891
+scale = Vector2(-1, 1)
+texture = ExtResource("9_wmwab")
 
-[node name="GradientCircle5" type="Sprite2D" parent="CanvasGroup" unique_id=1046378774]
-position = Vector2(-19, 35)
-rotation = -2.59245
-scale = Vector2(0.08205004, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="LeftUpperLeg" type="Sprite2D" parent="CanvasGroup" unique_id=1046378774]
+position = Vector2(-13.053847, 8.499999)
+rotation = -3.403392
+texture = ExtResource("7_2xs52")
 
-[node name="GradientCircle13" type="Sprite2D" parent="CanvasGroup" unique_id=1458476426]
-position = Vector2(-25, 47.999996)
-rotation = -1.7528702
-scale = Vector2(0.18799059, 0.09386336)
-texture = ExtResource("1_j8jew")
+[node name="LeftLowerLeg" type="Sprite2D" parent="CanvasGroup" unique_id=1458476426]
+position = Vector2(-19.053848, 14.499998)
+rotation = -0.5235988
+texture = ExtResource("8_a84w5")
 
-[node name="GradientCircle14" type="Sprite2D" parent="CanvasGroup" unique_id=14443358]
-position = Vector2(-31.999996, 62.000008)
-rotation = -2.068851
-scale = Vector2(0.08995715, 0.13303928)
-texture = ExtResource("1_j8jew")
+[node name="LeftFoot" type="Sprite2D" parent="CanvasGroup" unique_id=14443358]
+position = Vector2(-21.053848, 24.5)
+rotation = -0.83171654
+texture = ExtResource("9_wmwab")
 
-[node name="GradientCircle6" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
-position = Vector2(0, -34)
-rotation = -3.1160486
-scale = Vector2(0.21371318, 0.2578125)
-texture = ExtResource("1_j8jew")
+[node name="Head" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
+position = Vector2(-0.053849638, -31.5)
+texture = ExtResource("8_wmwab")
 
-[node name="GradientCircle15" type="Sprite2D" parent="CanvasGroup" unique_id=1057384286]
-position = Vector2(0.99999976, -10.000002)
-rotation = -3.1160486
-scale = Vector2(0.074323684, 0.16610868)
-texture = ExtResource("1_j8jew")
+[node name="Tail01" type="Sprite2D" parent="CanvasGroup" unique_id=1057384286]
+position = Vector2(-0.053846836, 33.5)
+texture = ExtResource("9_xcgvg")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1496338513]
+[node name="Tail02" type="Sprite2D" parent="CanvasGroup" unique_id=1374531597]
+position = Vector2(-0.05384648, 41.5)
+texture = ExtResource("10_632xl")
+
+[node name="WorldProjection" type="Node2D" parent="." unique_id=352708969]
+
+[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1715680786]
+stream = ExtResource("4_tnt1p")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1960739503]
+stream = ExtResource("4_tnt1p")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1556360732]
+stream = ExtResource("4_tnt1p")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="Area2D" type="Area2D" parent="WorldProjection" unique_id=1496338513]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820379432]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldProjection/Area2D" unique_id=820379432]
 shape = SubResource("CircleShape2D_t2dwb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="WorldProjection" unique_id=1476885383]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1884077241]
+libraries/ = SubResource("AnimationLibrary_2spnw")
+
+[node name="RecalculateNavTimer" type="Timer" parent="." unique_id=614910217]

@@ -1,5 +1,5 @@
 extends Node
 
 var level_progression:Array
-var weapon_progression:Array[String] = ["Flak"]
-var sensor_progression:Array[String] = ["Motion", "Thermal"]
+var weapon_progression:Array[String] = ["flak"]
+var sensor_progression:Array[String] = ["motion", "thermal"]

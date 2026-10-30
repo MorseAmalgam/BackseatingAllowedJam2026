@@ -18,3 +18,6 @@ texture = ExtResource("2_urh05")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1776581962]
 shape = SubResource("CircleShape2D_t2dwb")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=330381693]
+current = true
