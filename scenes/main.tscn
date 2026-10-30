@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ciej31t77dv2x" path="res://scenes/control/title_screen.tscn" id="15_yq6so"]
 [ext_resource type="PackedScene" uid="uid://dai2m18txbsl7" path="res://scenes/control/menu.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://c47vf3csq3tot" path="res://scenes/control/mission_complete.tscn" id="17_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://crrpbgwot4tku" path="res://scenes/control/mission_failed.tscn" id="18_0ld40"]
+[ext_resource type="PackedScene" uid="uid://c2rpmdhenrp3s" path="res://scenes/control/mission_failed.tscn" id="18_0ld40"]
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("3_muem4")
@@ -79,11 +79,11 @@ script = ExtResource("11_og1vs")
 api = NodePath("../TwitchAPI")
 metadata/_custom_type_script = "uid://blmhj3j00yk45"
 
-[node name="Flak" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
+[node name="PrimaryFire" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
 args_max = 2
-command = "flak"
+command = "fire"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 

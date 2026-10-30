@@ -3,7 +3,7 @@ extends Node2D
 
 var WEAPONS = {
 	"bunker":load("res://scenes/2D/weapon/bunker.tscn"),
-	"flak":load("res://scenes/2D/weapon/flak.tscn"),
+	"fire":load("res://scenes/2D/weapon/primary_fire.tscn"),
 	"flare":load("res://scenes/2D/weapon/flare.tscn"),
 	"laser":load("res://scenes/2D/weapon/laser.tscn"),
 	"thumper":load("res://scenes/2D/weapon/thumper.tscn"),
@@ -83,10 +83,10 @@ func _start_gameplay() -> void:
 func _on_received_fire_command(_from_username: String, info: TwitchCommandInfo, _args: PackedStringArray) -> void:
 	printt(info.command.to_string())
 	# Create our weapon node
-	var weapon_cmd = info.command.to_string().replace("!", "")
+	var weapon_command = info.command.to_string().replace("!", "")
 	var weapon_node
-	if (WEAPONS.has(weapon_cmd)):
-		weapon_node = WEAPONS[weapon_cmd].instantiate()
+	if (WEAPONS.has(weapon_command)):
+		weapon_node = WEAPONS[weapon_command].instantiate()
 	
 	# Our parameters should be X and Y coordinates
 	weapon_node.position = Vector2(info.arguments[0].to_float(), info.arguments[1].to_float())
