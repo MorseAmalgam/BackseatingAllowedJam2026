@@ -12,17 +12,12 @@ func _on_restart_level_button_pressed() -> void:
 
 
 func _on_return_to_map_button_pressed() -> void:
-	pass # Replace with function body.
+	$"/root/Main".navigate_to_screen(Main.InterfaceScreens.MAP)
 
 
 func _on_quit_to_title_screen_button_pressed() -> void:
-	# Toggle pause so we can process the scene change.
-	$"/root/Main".toggle_pause()
-	SceneLoader.change_scene("res://scenes/control/title_screen.tscn")
+	$"/root/Main".navigate_to_screen(Main.InterfaceScreens.TITLE)
 
 
 func _on_quit_to_desktop_button_pressed() -> void:
-	# This should probably have a confirmation, but I'm too lazy to make ANOTHER popup.
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	get_tree().quit()
-	pass
+	$"/root/Main".exit_game()

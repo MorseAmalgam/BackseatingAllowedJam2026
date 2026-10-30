@@ -149,6 +149,9 @@ shape = SubResource("CircleShape2D_t2dwb")
 libraries/ = SubResource("AnimationLibrary_2spnw")
 
 [node name="RecalculateNavTimer" type="Timer" parent="." unique_id=614910217]
+wait_time = 0.25
 autostart = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=168949374]
 
 [connection signal="timeout" from="RecalculateNavTimer" to="." method="_on_recalculate_nav_timer"]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://crrpbgwot4tku"]
+
+[ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="1_6e148"]
+[ext_resource type="Script" uid="uid://bodktfd73xael" path="res://scenes/control/game_over.gd" id="1_cpvhv"]
+
+[node name="GameOver" type="Control" unique_id=1952879490]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cpvhv")
+
+[node name="Label" type="Label" parent="." unique_id=1980941713]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 110.0
+offset_right = 871.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("1_6e148")
+theme_override_font_sizes/font_size = 25
+text = "Ya done messed up :("
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2124724608]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 187.0
+offset_right = 793.0
+offset_bottom = 379.0
+
+[node name="RestartLevelButton" type="Button" parent="VBoxContainer" unique_id=1591834417]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6e148")
+disabled = true
+text = "Restart Level"
+
+[node name="ReturnToMapButton" type="Button" parent="VBoxContainer" unique_id=437843050]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6e148")
+disabled = true
+text = "Return To Map"
+
+[node name="QuitToTitleScreenButton" type="Button" parent="VBoxContainer" unique_id=1962053624]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6e148")
+text = "Quit To Title Screen"
+
+[node name="QuitToDesktopButton" type="Button" parent="VBoxContainer" unique_id=679383119]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6e148")
+text = "Quit To Desktop"
+
+[connection signal="pressed" from="VBoxContainer/RestartLevelButton" to="." method="_on_restart_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToTitleScreenButton" to="." method="_on_quit_to_title_screen_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToDesktopButton" to="." method="_on_quit_to_desktop_button_pressed"]
