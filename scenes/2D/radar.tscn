@@ -58,12 +58,14 @@ offset_right = 181.0
 offset_bottom = 300.0
 
 [node name="Motion" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=2087824967]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 0, 0, 1)
 
 [node name="Infrared" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=526538378]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 40.0
 offset_right = 80.0
@@ -71,6 +73,7 @@ offset_bottom = 40.0
 color = Color(0, 0, 1, 1)
 
 [node name="Seismic" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=2013575919]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 80.0
 offset_right = 120.0
@@ -78,6 +81,7 @@ offset_bottom = 40.0
 color = Color(0, 1, 0, 1)
 
 [node name="Heat" type="ColorRect" parent="Camera2D/ScannerUI/ScanIndicators" unique_id=1744427499]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 119.0
 offset_right = 159.0
