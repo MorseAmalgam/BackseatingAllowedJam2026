@@ -7,10 +7,12 @@ enum Scans {
 	THERMAL = 4
 }
 
+# 3 is the magic number here. 2 still has critter jiggle. 
+const DRAG_DELAY_FRAMES := 3
 
 var is_held:bool = false
 var click_point:Vector2i
-
+var target_queue:Array[Vector2i] = []   # drag targets, oldest first
 
 func check_held_changed(mouse_state:bool)->bool:
 	var check = mouse_state != is_held
@@ -22,13 +24,22 @@ func _process(_delta: float) -> void:
 	# Mouse drag for sensor array
 	if get_focused_window() == self && check_held_changed(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) && is_held:
 		click_point = get_viewport().get_mouse_position()
-	
+		# Prefill the queue so the window stays put until the delay has elapsed
+		target_queue.clear()
+		for i in DRAG_DELAY_FRAMES:
+			target_queue.push_back(position)
+
 	# Update the window position if we're dragging it
 	if is_held:
-		position = DisplayServer.mouse_get_position() - click_point
-	
+		target_queue.push_back(DisplayServer.mouse_get_position() - click_point)
+		position = target_queue.pop_front()   # target from DRAG_DELAY_FRAMES ago
+	elif not target_queue.is_empty():
+		position = target_queue.pop_front()   # released: walk out the remaining targets
+
 	# Actually seems a tiny bit more responsive if you cut down the number of updates
-	var target_position = Vector2(position.x, position.y) - Vector2(DisplayServer.window_get_position_with_decorations(0))
+	# Camera uses the newest target while the window is still catching up
+	var window_pos = target_queue.back() if not target_queue.is_empty() else position
+	var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position_with_decorations(0))
 	if ($Camera2D.position.distance_to(target_position) > 0.01):
 		$Camera2D.position = target_position
 		$Camera2D/ScannerUI/CoordinateIndicator.text = "TRIANGULATING..."
