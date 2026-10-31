@@ -66,6 +66,11 @@ func activate() -> void:
 	pass
 
 
+func deactivate() -> void:
+	visible = false
+	$TriangulationTimer.stop()
+
+
 func _update_scan_indicators(active:int)->void:
 	canvas_cull_mask = 1 + (1 << active)
 	var scans:Array = $Camera2D/ScannerUI/ScanIndicators.get_children()

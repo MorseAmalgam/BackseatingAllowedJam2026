@@ -69,8 +69,10 @@ func _update_objectives() -> void:
 	$UI/MissionObjectivesList.text = objective_list
 	if has_succeeded:
 		$"/root/Main".show_mission_complete()
+		_radar_window.deactivate()
 	elif has_failed:
 		$"/root/Main".show_mission_failed()
+		_radar_window.deactivate()
 
 
 func propogate_weapon_fire(affected_area:Area2D, damage_amount:float, damage_type:Constants.WeaponTypes) -> void:
