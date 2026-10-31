@@ -74,13 +74,3 @@ func subscribe_to_events() -> void:
 		&"broadcaster_user_id": me.id,
 		&"user_id": me.id
 	})
-
-
-# Called when [member send_message_button] is pressed!
-func send_message_button_pressed() -> void:
-	TwitchService.chat("Hello from Godot! This message will send from the streamer playing your game's account to their chat.");
-
-
-func _on_twitch_command_command_received(_from_username: String, _info: TwitchCommandInfo, _args: PackedStringArray) -> void:
-	printt("Wow! Command get!")
-	pass # Replace with function body.

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
 [ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="2_vupku"]
 [ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="4_27ale"]
+[ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="5_nfmac"]
 
 [node name="RadarWindow" type="Window" unique_id=826591826]
 process_mode = 3
@@ -29,6 +30,21 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ExtractionSequence" type="RichTextLabel" parent="Camera2D/ScannerUI" unique_id=688573585]
+visible = false
+layout_mode = 0
+offset_top = 63.0
+offset_right = 300.0
+offset_bottom = 345.0
+theme_override_fonts/normal_font = ExtResource("5_nfmac")
+theme_override_fonts/bold_font = ExtResource("5_nfmac")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "[b]EXTRACTION SEQUENCE[/b]
+A H R U L B"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/ScannerUI" unique_id=601042448]
 layout_mode = 0

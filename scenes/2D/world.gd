@@ -39,6 +39,7 @@ func _process(_delta: float) -> void:
 func _update_objectives() -> void:
 	var has_succeeded:bool = true
 	var has_failed:bool = false
+	var complete_count:int = 0
 	var objective_list:String = ""
 	for objective in objectives:
 		objective.update()
@@ -52,8 +53,18 @@ func _update_objectives() -> void:
 				objective_text = "[color=WHITE]〔 〕%s[/color]\n" % objective_text
 				has_succeeded = false
 			MissionObjective.ObjectiveState.COMPLETED:
+				complete_count += 1
 				objective_text = "[color=GREEN]〔O〕%s[/color]\n" % objective_text
 		objective_list += objective_text
+	
+	# If only one objective is left to complete, it must be extraction
+	if complete_count == objectives.size()-1:
+		if objectives[objectives.size()-1].sequence == []:
+			$UI/ExtractionSequenceHeader.visible = true
+			$UI/ExtractionSequence.visible = true
+			objectives[objectives.size()-1].begin_extraction_sequence()
+		else:
+			$UI/ExtractionSequence.text = objectives[objectives.size()-1].sequence_message
 	
 	$UI/MissionObjectivesList.text = objective_list
 	if has_succeeded:

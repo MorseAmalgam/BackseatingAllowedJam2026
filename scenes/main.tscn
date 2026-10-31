@@ -79,7 +79,7 @@ script = ExtResource("11_og1vs")
 api = NodePath("../TwitchAPI")
 metadata/_custom_type_script = "uid://blmhj3j00yk45"
 
-[node name="PrimaryFire" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
+[node name="Fire" type="Node" parent="TwitchService" unique_id=942495025 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
 args_min = 2
 args_max = 2
@@ -121,9 +121,11 @@ metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 
 [node name="ExtractionVerify" type="Node" parent="TwitchService" unique_id=1953945448 node_paths=PackedStringArray("eventsub")]
 script = ExtResource("12_2wyq8")
+command_prefixes = Array[String]([])
+aliases = Array[String](["b", "c", "d", "e", "f", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 args_min = 1
 args_max = 1
-command = "verify"
+command = "a"
 eventsub = NodePath("../TwitchEventsub")
 metadata/_custom_type_script = "uid://bmluckfvgm1c2"
 

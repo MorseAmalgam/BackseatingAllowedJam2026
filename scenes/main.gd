@@ -29,9 +29,10 @@ func exit_game() -> void:
 
 
 func navigate_to_screen(scene_path:String) -> void:
-	# Toggle pause so we can process the scene change.
-	toggle_pause()
+	# Disable pause so we can process the scene change.
+	get_tree().paused = false
 	SceneLoader.change_scene(scene_path)
+
 
 func show_mission_complete() -> void:
 	menu_enabled = false
