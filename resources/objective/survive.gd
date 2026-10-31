@@ -58,7 +58,9 @@ func _on_event(event: TwitchEventsub.Event) -> void:
 func _update_message() -> void:
 	sequence_message = ""
 	for i in range(6):
+		# Highlight correctly input characters
 		if (i < input_sequence_progress):
-			sequence_message += "[color=#3efda6]%s[/color]" % sequence[i]
+			sequence_message += "[color=#3efda6]%s[/color] " % sequence[i]
 		else:
-			sequence_message += sequence[i]
+			sequence_message += "%s " % sequence[i]
+	sequence_message = sequence_message.trim_suffix(" ")
