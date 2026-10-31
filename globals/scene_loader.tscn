@@ -136,6 +136,7 @@ shader_parameter/lightness = 0.7
 shader_parameter/alpha_cutoff = 0.0
 
 [node name="SceneLoader" type="Node2D" unique_id=2020132553]
+process_mode = 3
 script = ExtResource("1_2otee")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1876256462]

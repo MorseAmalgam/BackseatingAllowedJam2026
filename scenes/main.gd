@@ -28,9 +28,16 @@ func exit_game() -> void:
 	get_tree().quit()
 
 
+func hide_menus() -> void:
+	get_tree().paused = false
+	$Menu.visible = false
+	$MissionComplete.visible = false
+	$MissionFailed.visible = false
+
+
 func navigate_to_screen(scene_path:String) -> void:
 	# Disable pause so we can process the scene change.
-	get_tree().paused = false
+	hide_menus()
 	SceneLoader.change_scene(scene_path)
 
 
@@ -38,14 +45,12 @@ func show_mission_complete() -> void:
 	menu_enabled = false
 	get_tree().paused = true
 	$MissionComplete.visible = true
-	pass
 
 
 func show_mission_failed() -> void:
 	menu_enabled = false
 	get_tree().paused = true
 	$MissionFailed.visible = true
-	pass
 
 
 func toggle_pause() -> void:
@@ -56,15 +61,13 @@ func toggle_pause() -> void:
 
 
 func _on_scene_load_requested() -> void:
-	# Hide the menu so it's not still up when the transition finishes.
-	$Menu.visible = false
+	# Hide the menus so they're not still up when the transition finishes.
+	hide_menus()
 	# Disable the menu - it's unlikely we'd want it immediately accessible again.
 	menu_enabled = false
 	# Disable GreenHeat so that it can't do anything silly until we tell it to.
 	if get_node_or_null("GreenHeat") != null:
 		$GreenHeat.detecting = false
-		
-	pass
 
 
 func _on_scene_loaded(new_scene:Node):
@@ -72,7 +75,8 @@ func _on_scene_loaded(new_scene:Node):
 	# But why chance it?
 	for child in $ActiveScene.get_children():
 		child.queue_free()
-	
-	# Add our new scene
+	# Overkill hiding the menus AGAIN because they seem to persist sometimes.
+	hide_menus()
+	# Add our new scene.
 	new_scene.position = Vector2.ZERO
 	$ActiveScene.add_child(new_scene)
