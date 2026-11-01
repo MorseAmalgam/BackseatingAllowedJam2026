@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://d32dhevtlxlmk"]
+
+[ext_resource type="Script" uid="uid://c45hsiy22cg7u" path="res://scenes/control/tutorial.gd" id="1_ocwtv"]
+[ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="2_bt04i"]
+
+[node name="Tutorial" type="Control" unique_id=1948626684]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ocwtv")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=2093079129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7490196)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=448089308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2103922747]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1154877836]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1469516932]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1329058040]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_bt04i")
+theme_override_fonts/bold_font = ExtResource("2_bt04i")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]HOW TO PLAY[/b]
+
+[b]STREAMER[/b]
+- Fly the ship with the arrow keys or WASD.
+- Drag the radar window over the action. Creatures only show on the radar.
+- Press [b]4[/b] for the thermal scan.
+- Put the reticle on a creature and read the [b]RGN: <x, y>[/b] numbers.
+
+[b]CHAT[/b]
+- Fire a weapon with [b]!fire x y[/b], using the RGN numbers. It lands after 2 seconds.
+- When the extraction code appears, type it [b]one character per message[/b], in order.
+- Work together! If you input the wrong value, your team must start over!
+
+If the creature reaches you, the ship will take damage, which will destroy the ship. Keep the ship alive. Extract to win."
+fit_content = true
+scroll_active = false
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2020413315]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bt04i")
+theme_override_font_sizes/font_size = 16
+text = "Start The Mission!"
