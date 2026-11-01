@@ -2,13 +2,14 @@ shader_type canvas_item;
 
 uniform sampler2D screen_texture:hint_screen_texture, repeat_disable;
 uniform sampler2D color_lut:source_color;
+uniform float steps = 1.0;
 
 void fragment() {
 	
 	vec4 c = textureLod(screen_texture, SCREEN_UV, 0.0);
 	if (c.a > 0.0001) {
-		c.rgb = texture(color_lut, vec2(c.a, 0)).rgb / c.a;
+		c.rgb = texture(color_lut, vec2(round(c.a * steps) / steps, 0)).rgb;
 	}
 	
-	COLOR *= c;
+	COLOR = c;
 }

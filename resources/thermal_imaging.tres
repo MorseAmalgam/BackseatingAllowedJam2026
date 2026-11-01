@@ -12,3 +12,4 @@ gradient = SubResource("Gradient_tnt1p")
 [resource]
 shader = ExtResource("1_uqkvs")
 shader_parameter/color_lut = SubResource("GradientTexture1D_tnt1p")
+shader_parameter/steps = 16.0

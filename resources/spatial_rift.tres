@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1lir2a8e0uvb"]
+
+[ext_resource type="Shader" uid="uid://cqe1hvorh3416" path="res://resources/shaders/heat_signature.gdshader" id="1_ggqst"]
+
+[sub_resource type="Gradient" id="Gradient_tnt1p"]
+offsets = PackedFloat32Array(0.3433735, 0.36144578, 0.5421687, 1)
+colors = PackedColorArray(0.22352941, 0.015686275, 0.3019608, 0, 0.22396922, 0.015986918, 0.30346856, 1, 0.7823887, 8.394003e-05, 0.63423026, 1, 0.06383653, 1.5859083e-05, 0.27939305, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnt1p"]
+gradient = SubResource("Gradient_tnt1p")
+
+[resource]
+shader = ExtResource("1_ggqst")
+shader_parameter/color_lut = SubResource("GradientTexture1D_tnt1p")
+shader_parameter/steps = 8.0
