@@ -43,6 +43,7 @@ _data = {
 process_mode = 1
 visibility_layer = 8
 script = ExtResource("1_nba7m")
+affected_by = 2
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
 visibility_layer = 8

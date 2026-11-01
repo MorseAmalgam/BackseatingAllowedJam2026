@@ -8,7 +8,7 @@ enum Scans {
 }
 
 # 3 is the magic number here. 2 still has critter jiggle. 
-const DRAG_DELAY_FRAMES := 3
+const DRAG_DELAY_FRAMES := 2
 
 var is_held:bool = false
 var click_point:Vector2i
@@ -40,7 +40,6 @@ func _process(_delta: float) -> void:
 	# Actually seems a tiny bit more responsive if you cut down the number of updates
 	# Camera uses the newest target while the window is still catching up
 	var window_pos = target_queue.back() if not target_queue.is_empty() else position
-	#var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position_with_decorations(0))
 	var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position(0))
 	if ($Camera2D.position.distance_to(target_position) > 0.01):
 		$Camera2D.position = target_position
@@ -52,13 +51,13 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("hotbar_1") && ProgressManager.sensor_progression.has("motion"):
-		_update_scan_indicators(Scans.MOTION)
+		_update_scan_indicators(Constants.ScanTypes.Motion)
 	elif Input.is_action_just_pressed("hotbar_2") && ProgressManager.sensor_progression.has("infrared"):
-		_update_scan_indicators(Scans.INFRARED)
-	elif Input.is_action_just_pressed("hotbar_3") && ProgressManager.sensor_progression.has("vibration"):
-		_update_scan_indicators(Scans.VIBRATION)
+		_update_scan_indicators(Constants.ScanTypes.Infrared)
+	elif Input.is_action_just_pressed("hotbar_3") && ProgressManager.sensor_progression.has("spatial"):
+		_update_scan_indicators(Constants.ScanTypes.Spatial)
 	elif Input.is_action_just_pressed("hotbar_4") && ProgressManager.sensor_progression.has("thermal"):
-		_update_scan_indicators(Scans.THERMAL)
+		_update_scan_indicators(Constants.ScanTypes.Thermal)
 
 
 func activate() -> void:

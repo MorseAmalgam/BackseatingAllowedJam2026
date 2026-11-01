@@ -3,6 +3,7 @@ extends Enemy
 
 @export var attack_range:float = 80
 @export var attack_damage:float = 1
+@export var head_node:Node2D
 @export var movement_speed:float = 10
 @onready var navigation_agent:NavigationAgent2D = $NavigationAgent2D
 @onready var attack_sound_player:AudioStreamPlayer2D = $AttackAudioPlayer
@@ -42,6 +43,8 @@ func _process(delta: float) -> void:
 	var new_velocity = global_position.direction_to(adjusted_target_position) * movement_delta
 	look_at(adjusted_target_position)
 	global_position = global_position.move_toward(global_position + new_velocity, movement_delta)
+	if (head_node != null):
+		head_node.look_at(target.position)
 	
 
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cupgid58skdja"]
 
-[ext_resource type="Script" uid="uid://c8uflge1p2bbi" path="res://scenes/2D/enemy/moving_enemy.gd" id="1_2xs52"]
+[ext_resource type="Script" uid="uid://c8uflge1p2bbi" path="res://scenes/2D/moving_enemy.gd" id="1_2xs52"]
 [ext_resource type="Material" uid="uid://cpvjju1mqbg1h" path="res://resources/thermal_imaging.tres" id="2_2xs52"]
 [ext_resource type="Texture2D" uid="uid://d1eqmjl128vnh" path="res://assets/textures/temp/heatbeast_body.png" id="3_kur5f"]
 [ext_resource type="Texture2D" uid="uid://1tbrxp5ug6t2" path="res://assets/textures/temp/heatbeast_upper_arm.png" id="4_oia7a"]
@@ -26,15 +26,22 @@ _data = {
 &"Die": SubResource("Animation_4m3gn")
 }
 
-[node name="HeatCreature" type="Node2D" unique_id=511157504]
+[node name="HeatCreature" type="Node2D" unique_id=511157504 node_paths=PackedStringArray("head_node")]
 process_mode = 1
 visibility_layer = 16
 script = ExtResource("1_2xs52")
+head_node = NodePath("CanvasGroup/Head")
+affected_by = 3
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
 visibility_layer = 16
 material = ExtResource("2_2xs52")
 rotation = 1.5707964
+
+[node name="Head" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
+position = Vector2(-1.0505319e-06, -24)
+texture = ExtResource("8_wmwab")
+offset = Vector2(8, 0)
 
 [node name="Body" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
 position = Vector2(-0.21245325, 2.457697)
@@ -105,10 +112,6 @@ texture = ExtResource("8_a84w5")
 position = Vector2(-21.053848, 24.5)
 rotation = -0.83171654
 texture = ExtResource("9_wmwab")
-
-[node name="Head" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
-position = Vector2(-0.053849638, -31.5)
-texture = ExtResource("8_wmwab")
 
 [node name="Tail01" type="Sprite2D" parent="CanvasGroup" unique_id=1057384286]
 position = Vector2(-0.053846836, 33.5)

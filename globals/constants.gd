@@ -7,3 +7,10 @@ enum WeaponTypes {
 	Primary,
 	Thumper
 }
+
+enum ScanTypes {
+	Motion = 1,
+	Infrared = 2,
+	Spatial = 3,
+	Thermal = 4
+}

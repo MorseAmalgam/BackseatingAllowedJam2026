@@ -17,6 +17,9 @@ _data = {
 
 [node name="Vessel" type="Node2D" unique_id=1181753356]
 script = ExtResource("1_jnm0n")
+max_velocity = 600.0
+acceleration = 600.0
+friction = 0.9
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1953196910]
 color = Color(0, 0, 0, 1)

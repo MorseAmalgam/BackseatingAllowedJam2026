@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbpmhnmf2f31" path="res://scenes/2D/obstacle/boulder03.tscn" id="8_ahorp"]
 [ext_resource type="PackedScene" uid="uid://bnknw3tc00rrd" path="res://scenes/2D/enemy/rift.tscn" id="11_ahorp"]
 [ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="12_nft3w"]
+[ext_resource type="PackedScene" uid="uid://d1uevkt70x0i2" path="res://scenes/2D/enemy/squid.tscn" id="13_r7d10"]
 
 [sub_resource type="Resource" id="Resource_h0unw"]
 script = ExtResource("3_lo0i8")
@@ -105,6 +106,7 @@ position = Vector2(1187, 357)
 position = Vector2(469, 358)
 
 [node name="UI" type="Control" parent="." unique_id=933209287]
+visibility_layer = 32
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -179,3 +181,6 @@ position = Vector2(511, 178)
 
 [node name="HeatCreature" parent="." unique_id=1610203839 instance=ExtResource("12_nft3w")]
 position = Vector2(1089, 530)
+
+[node name="Squid" parent="." unique_id=2072341095 instance=ExtResource("13_r7d10")]
+position = Vector2(857, 539)

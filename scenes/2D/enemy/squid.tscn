@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://d1uevkt70x0i2"]
+
+[ext_resource type="Script" uid="uid://ekbeelhqf08s" path="res://scenes/2D/enemy/squid.gd" id="1_j6gfm"]
+[ext_resource type="Material" uid="uid://bvpsk8vs31wid" path="res://resources/gravitational.tres" id="2_lbtbb"]
+[ext_resource type="Texture2D" uid="uid://cydilebxt7nom" path="res://assets/textures/squid/body.png" id="3_l651r"]
+[ext_resource type="Texture2D" uid="uid://kjrem4api7s2" path="res://assets/textures/squid/head.png" id="4_b42wb"]
+[ext_resource type="AudioStream" uid="uid://b04crvcruuk1m" path="res://assets/audio/temp/imp death 2.wav" id="5_4c0s0"]
+
+[sub_resource type="Gradient" id="Gradient_7vemg"]
+offsets = PackedFloat32Array(0.58247423, 0.6494845, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.6627451, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_8d5i0"]
+offsets = PackedFloat32Array(0, 0.5322581, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vhspf"]
+gradient = SubResource("Gradient_8d5i0")
+fill_from = Vector2(0, 0.82051283)
+fill_to = Vector2(0, 0.16239317)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
+radius = 50.0
+
+[sub_resource type="Animation" id="Animation_4m3gn"]
+resource_name = "Die"
+length = 4.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2spnw"]
+_data = {
+&"Die": SubResource("Animation_4m3gn")
+}
+
+[node name="Squid" type="Node2D" unique_id=511157504 node_paths=PackedStringArray("tentacles", "head_node")]
+process_mode = 1
+visibility_layer = 4
+script = ExtResource("1_j6gfm")
+tentacles = [NodePath("CanvasGroup/Tentacle01"), NodePath("CanvasGroup/Tentacle02"), NodePath("CanvasGroup/Tentacle03"), NodePath("CanvasGroup/Tentacle04")]
+head_node = NodePath("CanvasGroup/Head")
+affected_by = 3
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
+visibility_layer = 4
+material = ExtResource("2_lbtbb")
+rotation = 1.5707964
+
+[node name="Body" type="Sprite2D" parent="CanvasGroup" unique_id=103696384]
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("3_l651r")
+
+[node name="Head" type="Sprite2D" parent="CanvasGroup" unique_id=1745199661]
+position = Vector2(-1.3987644e-06, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("4_b42wb")
+offset = Vector2(4.345, 0)
+
+[node name="Tentacle01" type="Line2D" parent="CanvasGroup" unique_id=751716952]
+points = PackedVector2Array(0, 0, -0.9999995, 11, -0.99999917, 19, -0.99999875, 29, -0.9999984, 37, -0.999998, 47, -0.9999976, 55)
+width = 16.0
+gradient = SubResource("Gradient_7vemg")
+texture = SubResource("GradientTexture2D_vhspf")
+texture_mode = 2
+joint_mode = 2
+
+[node name="Tentacle02" type="Line2D" parent="CanvasGroup" unique_id=512218380]
+points = PackedVector2Array(0, 0, 4.371139e-07, 10, 8.305164e-07, 19, 1.1802075e-06, 27, 1.5298986e-06, 35, 1.8358783e-06, 42, 2.0981465e-06, 48)
+width = 16.0
+gradient = SubResource("Gradient_7vemg")
+texture = SubResource("GradientTexture2D_vhspf")
+texture_mode = 2
+joint_mode = 2
+
+[node name="Tentacle03" type="Line2D" parent="CanvasGroup" unique_id=1779673804]
+points = PackedVector2Array(-0.99999994, 1, -7.9999995, 8, -9.999999, 16, -5.999999, 24, -11.999998, 33, -5.999998, 40, -8.999998, 52)
+width = 16.0
+gradient = SubResource("Gradient_7vemg")
+texture = SubResource("GradientTexture2D_vhspf")
+texture_mode = 2
+joint_mode = 2
+
+[node name="Tentacle04" type="Line2D" parent="CanvasGroup" unique_id=1550155483]
+points = PackedVector2Array(-0.99999994, 1, -7.9999995, 8, -9.999999, 16, -5.999999, 24, -11.999998, 33, -5.999998, 40, -8.999998, 52)
+width = 16.0
+gradient = SubResource("Gradient_7vemg")
+texture = SubResource("GradientTexture2D_vhspf")
+texture_mode = 2
+joint_mode = 2
+
+[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1715680786]
+stream = ExtResource("5_4c0s0")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1960739503]
+stream = ExtResource("5_4c0s0")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1556360732]
+stream = ExtResource("5_4c0s0")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1496338513]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820379432]
+shape = SubResource("CircleShape2D_t2dwb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1476885383]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1884077241]
+libraries/ = SubResource("AnimationLibrary_2spnw")
+
+[node name="RecalculateNavTimer" type="Timer" parent="." unique_id=614910217]
+wait_time = 0.25
+autostart = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=168949374]
+
+[connection signal="timeout" from="RecalculateNavTimer" to="." method="_on_recalculate_nav_timer"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer"]

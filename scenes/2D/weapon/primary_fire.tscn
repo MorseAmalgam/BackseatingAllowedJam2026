@@ -74,11 +74,11 @@ bg_color = Color(0.16078432, 1, 0.1764706, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
 radius = 20.0
 
-[node name="Flak" type="Node2D" unique_id=487617637]
+[node name="PrimaryFire" type="Node2D" unique_id=487617637]
 script = ExtResource("1_wxj3l")
 deploy_speed = 2.0
 fire_sound = ExtResource("2_57v5n")
-damage_type = 1
+damage_type = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1039010484]
 libraries/ = SubResource("AnimationLibrary_lsqhv")

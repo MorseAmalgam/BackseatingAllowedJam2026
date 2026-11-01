@@ -10,7 +10,7 @@ const InterfaceScreens:Dictionary = {
 var how_to_play:Tutorial
 func _ready() -> void:
 	# Hide everything but layer 1
-	get_tree().root.get_viewport().canvas_cull_mask = 1
+	get_tree().root.get_viewport().canvas_cull_mask = 33
 	
 	# Prep our SceneLoader
 	SceneLoader.scene_loaded.connect(_on_scene_loaded)
