@@ -60,7 +60,6 @@ horizontal_alignment = 1
 [node name="RetryLevelButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=696307845]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_6e148")
-disabled = true
 text = "Retry Level"
 
 [node name="ReturnToMapButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=353144818]

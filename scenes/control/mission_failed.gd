@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_retry_level_button_pressed() -> void:
-	pass # Replace with function body.
+	$"/root/Main".reload_current_scene()
 
 
 func _on_return_to_map_button_pressed() -> void:

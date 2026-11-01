@@ -61,7 +61,6 @@ horizontal_alignment = 1
 [node name="ReplayLevelButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=696307845]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2ucoc")
-disabled = true
 text = "Replay Level"
 
 [node name="ReturnToMapButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=353144818]

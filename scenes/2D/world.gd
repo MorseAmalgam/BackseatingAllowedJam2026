@@ -21,6 +21,12 @@ signal on_weapon_fire(area:Area2D, weapon:Constants.WeaponTypes)
 func _ready():
 	# TODO: Enable menu and chat interaction after anything else 
 	
+	# Work on a copy so the survive objective added below doesn't pile up in the
+	# scene's exported array when the level is reloaded (retry/replay).
+	var level_objectives:Array[MissionObjective] = []
+	level_objectives.assign(objectives)
+	objectives = level_objectives
+
 	# Vessel Must Escape objective is always added to the end of the list
 	objectives.append(load("res://resources/objective/survive.gd").new())
 	for objective in objectives:

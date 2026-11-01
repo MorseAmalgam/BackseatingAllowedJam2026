@@ -13,6 +13,8 @@ func get_description() -> String:
 		return "%s (%01d:%02d)" % [custom_message, countdown / 60., ceili(countdown) % 60]
 
 func init(_world:World) -> void:
+	# This resource is shared by the cached scene, so reset it for every (re)load
+	state = ObjectiveState.IN_PROGRESS
 	countdown = timer
 	pass
 

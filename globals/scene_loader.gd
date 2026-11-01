@@ -7,9 +7,10 @@ var current_scene:Node
 var current_scene_path:String
 var loading_scene_path:String
 
-func change_scene(file_path:String):
-	# Meant to prevent accidentally hitting the scene transition if we're already on the scene
-	if (current_scene_path == file_path):
+func change_scene(file_path:String, force_reload:bool = false):
+	# Meant to prevent accidentally hitting the scene transition if we're already on the scene.
+	# force_reload bypasses this so a level can be retried/replayed.
+	if (current_scene_path == file_path && !force_reload):
 		return
 	
 	# Let things know we're transitioning to a new scene
