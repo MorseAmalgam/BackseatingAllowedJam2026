@@ -8,6 +8,8 @@
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="5_myeq5"]
 [ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://scenes/2D/radar.tscn" id="5_sdurb"]
 [ext_resource type="PackedScene" uid="uid://dfdq37tag08ol" path="res://scenes/2D/obstacle/boulder01.tscn" id="6_20xvl"]
+[ext_resource type="PackedScene" uid="uid://dxyluobuxo8fn" path="res://scenes/2D/obstacle/boulder02.tscn" id="7_1ly8h"]
+[ext_resource type="PackedScene" uid="uid://dnbpmhnmf2f31" path="res://scenes/2D/obstacle/boulder03.tscn" id="8_ahorp"]
 
 [sub_resource type="Resource" id="Resource_h0unw"]
 script = ExtResource("3_lo0i8")
@@ -16,11 +18,13 @@ custom_message = "Chicken nuggets will be ready in"
 metadata/_custom_type_script = "uid://ciug3p0k1h3fd"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t2dwb"]
-vertices = PackedVector2Array(807, 319, 809, 214, 834.1719, -191.99219, 1881.6172, -182.02344, 2343, 46.203125, 2343, 858.53125, 2107.7266, 1309.2891, 1570.7578, 1549.0391, 797, 202, -69.24219, -140.42969, 692, 202, 680, 211, -284.72656, 647.3906, 680, 238, 680, 300, 682, 321, 711.21094, 1568.9609, 797, 330, 693, 330, -151.35938, 1336.9609)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(2, 1, 8), PackedInt32Array(9, 2, 8, 10), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 11, 13), PackedInt32Array(12, 13, 14), PackedInt32Array(12, 14, 15), PackedInt32Array(0, 7, 16, 17), PackedInt32Array(18, 17, 16, 19, 12), PackedInt32Array(12, 15, 18)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-77, -150, 834, -202, 1884, -192, 2353, 40, 2353, 861, 2115, 1317, 1573, 1559, 710, 1579, -160, 1345, -295, 647)])
+vertices = PackedVector2Array(244.41406, 394.78906, 240.17969, 405.90625, 239.67969, 378.02344, 256.14063, 396.16406, 784.2344, 333.1172, 774.3828, 327.3672, 784, 331, 1274.8125, 18, 1270.4922, 361.21094, 1254, 307, 679, 321, 697.1719, 317.5, 681.7578, 327.6172, 1181, 293, 1164, 248, 293.73438, 400.60156, 268.1172, 397.57813, 321, 375.23438, 173.20313, 452.82813, 216.46875, 451.27344, 180.67969, 478.82813, 148.83594, 286.8125, 150.44531, 316.39063, 133.03125, 295.71875, 17, 18, 334.7422, 288.45313, 318.14063, 278.51563, 357, 274, 1227, 422, 1270.25, 380.53906, 1266.1797, 704.97656, 1036.0781, 704.7969, 1034.2578, 700.5781, 1134, 290, 1161, 315, 1124, 316, 1095, 330, 1101, 367, 1144, 213, 272, 212, 270.27344, 249.85938, 270.15625, 249.78906, 698.8047, 507.14844, 749.64844, 691.5469, 752.5781, 704.5781, 17, 704.0078, 633.2656, 467.625, 1024, 355, 348.92188, 303.96875, 1122, 412, 1174, 402, 1003.9219, 681.7656, 1113, 190, 1078, 192, 375, 169, 340, 162, 214.46875, 245.32813, 1003, 356, 978.3906, 670.09375, 765.4844, 438.6328, 779.2578, 384.4922, 325.0078, 446.98438, 618.21875, 403.5625, 985, 226, 966, 289, 832, 285, 811, 216, 922.78125, 704.7031, 919.21094, 704.7031, 904.8906, 666.96094, 938.72656, 681.96094, 117.71875, 446.3203, 194.55469, 543.85156, 956.15625, 672.46094, 852.28906, 673.08594, 800.91406, 649.21875, 716.4922, 495.78125, 264.28125, 562.28125, 393, 246, 658, 276, 675.6094, 366.96875, 1053, 223, 738, 202, 399, 194, 312, 160, 292, 170, 279, 185, 162.99219, 249.07031, 71.515625, 319.09375, 718, 224, 681, 225, 314.58594, 507.5625, 306.39844, 478.97656, 40.992188, 389.28125, 54.59375, 405.3125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(2, 3, 0), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 8, 9), PackedInt32Array(10, 11, 12), PackedInt32Array(9, 13, 14, 7), PackedInt32Array(15, 16, 17), PackedInt32Array(18, 19, 20), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(25, 26, 27), PackedInt32Array(28, 29, 30, 31, 32), PackedInt32Array(33, 14, 13, 34, 35), PackedInt32Array(36, 33, 35, 37), PackedInt32Array(7, 14, 38), PackedInt32Array(39, 40, 41), PackedInt32Array(42, 43, 44, 45, 46), PackedInt32Array(47, 36, 37), PackedInt32Array(48, 25, 27), PackedInt32Array(49, 50, 28, 32, 51), PackedInt32Array(7, 38, 52), PackedInt32Array(24, 7, 52, 53, 54, 55), PackedInt32Array(39, 41, 56, 24), PackedInt32Array(57, 47, 37, 49, 51, 58, 59, 60), PackedInt32Array(61, 15, 17, 62), PackedInt32Array(63, 64, 65, 66), PackedInt32Array(67, 68, 69, 70), PackedInt32Array(71, 18, 20, 72, 45), PackedInt32Array(6, 65, 64, 57, 4), PackedInt32Array(60, 4, 57), PackedInt32Array(59, 58, 73), PackedInt32Array(59, 73, 70, 69), PackedInt32Array(59, 69, 74, 75, 76), PackedInt32Array(42, 76, 75, 43), PackedInt32Array(62, 46, 45, 77), PackedInt32Array(48, 78, 79, 10, 12, 80, 62, 17), PackedInt32Array(53, 81, 63, 66, 82), PackedInt32Array(83, 54, 53, 82), PackedInt32Array(24, 55, 84), PackedInt32Array(24, 84, 85), PackedInt32Array(24, 85, 86), PackedInt32Array(24, 86, 39), PackedInt32Array(24, 56, 87), PackedInt32Array(24, 87, 21), PackedInt32Array(24, 23, 88), PackedInt32Array(82, 89, 90, 83), PackedInt32Array(91, 92, 61, 62), PackedInt32Array(48, 27, 78), PackedInt32Array(24, 88, 93), PackedInt32Array(45, 24, 93), PackedInt32Array(45, 93, 94), PackedInt32Array(45, 94, 71), PackedInt32Array(45, 72, 77), PackedInt32Array(62, 77, 91), PackedInt32Array(79, 78, 83, 90)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2, 3, 1290, 3, 1281, 720, 2, 719)])
 source_geometry_mode = 2
 source_geometry_group_name = &"navigation_polygon"
+border_size = 12.0
+agent_radius = 15.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_arqi5"]
 light_mode = 2
@@ -34,25 +38,69 @@ objectives = Array[ExtResource("2_h0unw")]([SubResource("Resource_h0unw")])
 visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=220804953]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_t2dwb")
 
 [node name="UnlitGround" type="Sprite2D" parent="." unique_id=1809586489]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
-position = Vector2(638.5, 432)
-scale = Vector2(0.6734375, 0.6734375)
 texture = ExtResource("1_lv8qc")
+centered = false
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=1480442902]
 material = SubResource("CanvasItemMaterial_arqi5")
-position = Vector2(638.5, 432)
-scale = Vector2(0.6734375, 0.6734375)
 texture = ExtResource("1_lv8qc")
+centered = false
 
 [node name="Boulder" parent="." unique_id=779185813 instance=ExtResource("6_20xvl")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
 position = Vector2(744, 266)
 
+[node name="Boulder2" parent="." unique_id=834939935 instance=ExtResource("7_1ly8h")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(712, 406)
+rotation = -0.5235988
+
+[node name="Boulder3" parent="." unique_id=309093220 instance=ExtResource("8_ahorp")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(334, 220)
+
+[node name="Boulder4" parent="." unique_id=1407580337 instance=ExtResource("7_1ly8h")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(247.00002, 308)
+rotation = -2.2636042
+
+[node name="Boulder5" parent="." unique_id=1189106394 instance=ExtResource("7_1ly8h")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(143, 389.00003)
+rotation = 0.9147657
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Boulder6" parent="." unique_id=672948037 instance=ExtResource("6_20xvl")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(257, 479)
+rotation = 2.1246986
+
+[node name="Boulder7" parent="." unique_id=1219803317 instance=ExtResource("6_20xvl")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(836, 717)
+rotation = -3.067568
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Boulder8" parent="." unique_id=2079523017 instance=ExtResource("8_ahorp")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(978.00006, 734)
+rotation = 0.357599
+
+[node name="Boulder9" parent="." unique_id=433286975 instance=ExtResource("7_1ly8h")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(1065, 275)
+
+[node name="Boulder10" parent="." unique_id=1948076152 instance=ExtResource("6_20xvl")]
+modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+position = Vector2(1187, 357)
+
 [node name="Vessel" parent="." unique_id=1181753356 instance=ExtResource("2_lv8qc")]
-position = Vector2(952, 641)
+position = Vector2(469, 358)
 
 [node name="UI" type="Control" parent="." unique_id=933209287]
 layout_mode = 3
