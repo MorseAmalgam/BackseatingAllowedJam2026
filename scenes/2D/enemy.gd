@@ -39,6 +39,11 @@ func _process(delta: float) -> void:
 	# Do not try to navigate if we are at our destination
 	if navigation_agent.is_navigation_finished():
 		return
+	
+	# If dead, stop moving - halloween is now over
+	if dying:
+		return
+	
 	# If the creature is close enough to the vessel to attack, it should attack instead of moving closer.
 	if global_position.distance_to(target.position) < attack_range:
 		if $AttackCooldownTimer.is_stopped():

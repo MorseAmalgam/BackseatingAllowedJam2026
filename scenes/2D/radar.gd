@@ -40,7 +40,8 @@ func _process(_delta: float) -> void:
 	# Actually seems a tiny bit more responsive if you cut down the number of updates
 	# Camera uses the newest target while the window is still catching up
 	var window_pos = target_queue.back() if not target_queue.is_empty() else position
-	var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position_with_decorations(0))
+	#var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position_with_decorations(0))
+	var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position(0))
 	if ($Camera2D.position.distance_to(target_position) > 0.01):
 		$Camera2D.position = target_position
 		$Camera2D/ScannerUI/CoordinateIndicator.text = "TRIANGULATING..."
@@ -80,10 +81,11 @@ func _update_scan_indicators(active:int)->void:
 
 
 func _on_triangulation_timer_timeout() -> void:
+	
 	# Update region info for command pinpointing
 	var pos = (
 		Vector2(position.x, position.y) - 
-		Vector2(DisplayServer.window_get_position_with_decorations(0)) + 
+		Vector2(DisplayServer.window_get_position(0)) + 
 		Vector2(DisplayServer.window_get_size(get_window_id()) / 2.0)
 		)
 	$Camera2D/ScannerUI/CoordinateIndicator.text = "RGN: <%d, %d>" % [pos.x, pos.y]

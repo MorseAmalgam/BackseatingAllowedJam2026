@@ -7,6 +7,7 @@ var max_velocity:float = 900
 var acceleration:float = 900
 var velocity:Vector2 = Vector2.ZERO
 var friction:float = 0.95
+var dying:bool = false
 
 func _process(delta: float) -> void:
 	
@@ -32,8 +33,12 @@ func _process(delta: float) -> void:
 
 
 func take_damage(amount:float) -> void:
+	# This is the 'stooooop he's already deaaaaaad' rule
+	if dying:
+		return
 	current_health -= amount
 	if current_health <= 0:
+		dying = true
 		$DestroyedAudioPlayer.play()
 		$AnimationPlayer.play("Die")
 		await $AnimationPlayer.animation_finished
