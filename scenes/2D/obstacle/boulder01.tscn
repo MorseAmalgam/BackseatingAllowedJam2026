@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dfdq37tag08ol"]
+
+[ext_resource type="Texture2D" uid="uid://dm1pqvhdr3tu2" path="res://assets/textures/world/boulder01.png" id="1_nkxuo"]
+
+[node name="Boulder" type="Node2D" unique_id=779185813]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=932175630]
+texture = ExtResource("1_nkxuo")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=458930764 groups=["navigation_polygon"]]
+radius = 21.93
+vertices = PackedVector2Array(-63, -41, -26, -42, -6, -64, 67, -50, 88, 19, 40, 65, -13, 45, -65, 55, -86, 10)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
