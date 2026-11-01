@@ -16,7 +16,7 @@ var current_hitpoints:float = max_hitpoints
 
 
 var target:Node2D
-
+var dying:bool = false
 
 func _ready() -> void:
 	get_parent().get_parent().get_parent().on_weapon_fire.connect(_process_attack)
@@ -83,6 +83,13 @@ func _process_attack(area_affected:Area2D, damage_amount:float, damage_type:Cons
 	current_hitpoints -= damage_amount
 	# Dead?
 	if current_hitpoints <= 0:
+		if dying:
+			return
+		dying = true
+		# just stop everything, he's already dead
+		set_process(false)
+		$AttackCooldownTimer.stop()
+		$RecalculateNavTimer.stop() 
 		# Remove collider from the real world
 		collider.queue_free()
 		death_sound_player.play()
