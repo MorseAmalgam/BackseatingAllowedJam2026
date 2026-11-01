@@ -31,7 +31,8 @@ func _process(_delta: float) -> void:
 
 	# Update the window position if we're dragging it
 	if is_held:
-		target_queue.push_back(DisplayServer.mouse_get_position() - click_point)
+		var adjustment_position = DisplayServer.mouse_get_position() - click_point
+		target_queue.push_back(adjustment_position)
 		position = target_queue.pop_front()   # target from DRAG_DELAY_FRAMES ago
 	elif not target_queue.is_empty():
 		position = target_queue.pop_front()   # released: walk out the remaining targets

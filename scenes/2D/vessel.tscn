@@ -43,3 +43,5 @@ current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1210048989]
 libraries/ = SubResource("AnimationLibrary_k4vpp")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1928349081]

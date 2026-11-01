@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ciug3p0k1h3fd" path="res://resources/objective/timer.gd" id="3_lo0i8"]
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="5_myeq5"]
 [ext_resource type="PackedScene" uid="uid://2mgugamg0umr" path="res://scenes/2D/radar.tscn" id="5_sdurb"]
+[ext_resource type="PackedScene" uid="uid://dfdq37tag08ol" path="res://scenes/2D/obstacle/boulder01.tscn" id="6_20xvl"]
 
 [sub_resource type="Resource" id="Resource_h0unw"]
 script = ExtResource("3_lo0i8")
@@ -14,18 +15,26 @@ timer = 20
 custom_message = "Chicken nuggets will be ready in"
 metadata/_custom_type_script = "uid://ciug3p0k1h3fd"
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_t2dwb"]
+vertices = PackedVector2Array(807, 319, 809, 214, 834.1719, -191.99219, 1881.6172, -182.02344, 2343, 46.203125, 2343, 858.53125, 2107.7266, 1309.2891, 1570.7578, 1549.0391, 797, 202, -69.24219, -140.42969, 692, 202, 680, 211, -284.72656, 647.3906, 680, 238, 680, 300, 682, 321, 711.21094, 1568.9609, 797, 330, 693, 330, -151.35938, 1336.9609)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(2, 1, 8), PackedInt32Array(9, 2, 8, 10), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 11, 13), PackedInt32Array(12, 13, 14), PackedInt32Array(12, 14, 15), PackedInt32Array(0, 7, 16, 17), PackedInt32Array(18, 17, 16, 19, 12), PackedInt32Array(12, 15, 18)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-77, -150, 834, -202, 1884, -192, 2353, 40, 2353, 861, 2115, 1317, 1573, 1559, 710, 1579, -160, 1345, -295, 647)])
+source_geometry_mode = 2
+source_geometry_group_name = &"navigation_polygon"
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_arqi5"]
 light_mode = 2
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_t2dwb"]
-vertices = PackedVector2Array(739.9297, 508.39063, 744.09375, 18.460938, 834.1719, -191.99219, 1881.6172, -182.02344, 2343, 46.203125, 2343, 858.53125, 2107.7266, 1309.2891, 1570.7578, 1549.0391, -69.24219, -140.42969, 533.64844, 29.53125, 711.21094, 1568.9609, -151.35938, 1336.9609, 552.4297, 541.8672, -284.72656, 647.3906)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 2, 1, 9), PackedInt32Array(0, 7, 10, 11, 12), PackedInt32Array(12, 11, 13, 8, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-77, -150, 834, -202, 1884, -192, 2353, 40, 2353, 861, 2115, 1317, 1573, 1559, 710, 1579, -160, 1345, -295, 647)])
 
 [node name="World" type="Node2D" unique_id=1439204650]
 process_mode = 1
 script = ExtResource("1_lvx6v")
 objectives = Array[ExtResource("2_h0unw")]([SubResource("Resource_h0unw")])
+
+[node name="RadarWindow" parent="." unique_id=826591826 instance=ExtResource("5_sdurb")]
+visible = false
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=220804953]
+navigation_polygon = SubResource("NavigationPolygon_t2dwb")
 
 [node name="UnlitGround" type="Sprite2D" parent="." unique_id=1809586489]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -33,24 +42,14 @@ position = Vector2(638.5, 432)
 scale = Vector2(0.6734375, 0.6734375)
 texture = ExtResource("1_lv8qc")
 
-[node name="RadarWindow" parent="." unique_id=826591826 instance=ExtResource("5_sdurb")]
-visible = false
-
 [node name="Ground" type="Sprite2D" parent="." unique_id=1480442902]
 material = SubResource("CanvasItemMaterial_arqi5")
 position = Vector2(638.5, 432)
 scale = Vector2(0.6734375, 0.6734375)
 texture = ExtResource("1_lv8qc")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=220804953]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_t2dwb")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=1000335789]
-radius = 70.18
-vertices = PackedVector2Array(544, 39, 734, 29, 730, 500, 562, 530)
-affect_navigation_mesh = true
-avoidance_enabled = false
+[node name="Boulder" parent="." unique_id=779185813 instance=ExtResource("6_20xvl")]
+position = Vector2(744, 266)
 
 [node name="Vessel" parent="." unique_id=1181753356 instance=ExtResource("2_lv8qc")]
 position = Vector2(952, 641)
