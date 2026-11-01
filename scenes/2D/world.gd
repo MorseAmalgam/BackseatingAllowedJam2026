@@ -86,17 +86,25 @@ func propogate_weapon_fire(affected_area:Area2D, damage_amount:float, damage_typ
 
 
 func _start_gameplay() -> void:
-	# Enable pause menu
-	$"/root/Main".menu_enabled = true
-	
-	# Activate sensor window
-	_radar_window.activate()
-	
 	# Connect to weapons platform - only listen for commands for weapons we have enabled.
 	for weapon in ProgressManager.weapon_progression:
 		TwitchService.instance.get_node(weapon.to_pascal_case()).command_received.connect(Callable(self, "_on_received_fire_command"))
 
-	pass
+	var main:Main = $"/root/Main"
+	if ProgressManager.show_tutorial:
+		# Wait for the player to dismiss the how-to-play card
+		main.how_to_play.dismissed.connect(_begin_play, CONNECT_ONE_SHOT)
+		main.show_how_to_play()
+	else:
+		_begin_play()
+
+
+func _begin_play() -> void:
+	ProgressManager.show_tutorial = false  # only once per session, so Retry doesn't re-show it
+	# Enable pause menu
+	$"/root/Main".menu_enabled = true
+	# Activate sensor window
+	_radar_window.activate()
 
 
 func _on_received_fire_command(_from_username: String, info: TwitchCommandInfo, _args: PackedStringArray) -> void:

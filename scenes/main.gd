@@ -7,13 +7,16 @@ const InterfaceScreens:Dictionary = {
 	MAP = "res://scenes/control/map.tscn",
 }
 
-
+var how_to_play:Tutorial
 func _ready() -> void:
 	# Prep our SceneLoader
 	SceneLoader.scene_loaded.connect(_on_scene_loaded)
 	SceneLoader.scene_load_requested.connect(_on_scene_load_requested)
 	SceneLoader.current_scene = $ActiveScene/TitleScreen
 
+	# Tutorial Time
+	how_to_play = preload("res://scenes/control/tutorial.tscn").instantiate()
+	add_child(how_to_play)
 
 func _process(_delta: float) -> void:
 	# Toggle for our menu
@@ -45,6 +48,8 @@ func reload_current_scene() -> void:
 	# Used by Retry/Replay - reloads the level that is currently active.
 	navigate_to_screen(SceneLoader.current_scene_path, true)
 
+func show_how_to_play() -> void:
+	how_to_play.open()
 
 func show_mission_complete() -> void:
 	menu_enabled = false
