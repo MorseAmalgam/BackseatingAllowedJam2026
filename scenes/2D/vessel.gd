@@ -3,10 +3,10 @@ extends Node2D
 
 @export var max_health:float = 20
 @export var current_health:float = max_health
-var max_velocity:float = 900
-var acceleration:float = 900
+@export var max_velocity:float = 900
+@export var acceleration:float = 900
+@export var friction:float = 0.95
 var velocity:Vector2 = Vector2.ZERO
-var friction:float = 0.95
 var dying:bool = false
 
 func _process(delta: float) -> void:
@@ -28,6 +28,9 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	velocity *= friction
+	
+	# LAZZZYYYY
+	position = Vector2(clampf(position.x, 40, 1240), clampf(position.y, 40, 680))
 	
 	pass
 
