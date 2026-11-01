@@ -19,6 +19,7 @@ var WEAPONS = {
 signal on_weapon_fire(area:Area2D, weapon:Constants.WeaponTypes)
 
 func _ready():
+	_radar_window.world_2d = get_window().world_2d
 	# TODO: Enable menu and chat interaction after anything else 
 	
 	# Work on a copy so the survive objective added below doesn't pile up in the

@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://2mgugamg0umr"]
 
 [ext_resource type="Script" uid="uid://beuguwxmfa855" path="res://scenes/2D/radar.gd" id="1_buqxs"]
-[ext_resource type="Texture2D" uid="uid://c7hhd7vtpllwf" path="res://icon.svg" id="2_leo8i"]
-[ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="2_vupku"]
 [ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="4_27ale"]
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="5_nfmac"]
 
@@ -112,62 +110,6 @@ offset_right = 175.0
 offset_bottom = 175.0
 texture = ExtResource("4_27ale")
 expand_mode = 3
-
-[node name="Field" type="Node2D" parent="." unique_id=1298864904]
-visibility_layer = 31
-
-[node name="HeatCreature" parent="Field" unique_id=511157504 instance=ExtResource("2_vupku")]
-position = Vector2(1176, 426)
-rotation = -0.17321159
-
-[node name="Icon" type="Sprite2D" parent="Field" unique_id=1647159180]
-modulate = Color(1, 0.110000014, 0.110000014, 1)
-visibility_layer = 2
-position = Vector2(315, 274)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon2" type="Sprite2D" parent="Field" unique_id=1664043817]
-modulate = Color(1, 0.110000014, 0.110000014, 1)
-visibility_layer = 2
-position = Vector2(851, 713)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon3" type="Sprite2D" parent="Field" unique_id=2035155792]
-modulate = Color(1, 0.110000014, 0.110000014, 1)
-visibility_layer = 2
-position = Vector2(1104, 50)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon4" type="Sprite2D" parent="Field" unique_id=125700871]
-modulate = Color(0.5253334, 0.110000014, 1, 1)
-visibility_layer = 16
-position = Vector2(553, 560)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon5" type="Sprite2D" parent="Field" unique_id=270112893]
-modulate = Color(0.5253334, 0.110000014, 1, 1)
-visibility_layer = 16
-position = Vector2(386, 78)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon6" type="Sprite2D" parent="Field" unique_id=641668199]
-modulate = Color(0, 1, 0.35686275, 1)
-visibility_layer = 8
-position = Vector2(429, 48)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
-
-[node name="Icon7" type="Sprite2D" parent="Field" unique_id=1289685066]
-modulate = Color(0, 0, 1, 1)
-visibility_layer = 4
-position = Vector2(3, 532)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_leo8i")
 
 [node name="TriangulationTimer" type="Timer" parent="." unique_id=1417830798]
 process_mode = 1

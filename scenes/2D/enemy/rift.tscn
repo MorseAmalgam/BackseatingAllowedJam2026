@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bnknw3tc00rrd"]
+
+[ext_resource type="Script" uid="uid://bny110vcyj5jn" path="res://scenes/2D/enemy/rift.gd" id="1_nba7m"]
+[ext_resource type="Material" uid="uid://d1lir2a8e0uvb" path="res://resources/spatial_rift.tres" id="2_nba7m"]
+[ext_resource type="Texture2D" uid="uid://b0x1udkd5do08" path="res://assets/textures/cloud.png" id="4_cps04"]
+[ext_resource type="AudioStream" uid="uid://b04crvcruuk1m" path="res://assets/audio/temp/imp death 2.wav" id="13_t80xs"]
+
+[sub_resource type="Curve" id="Curve_5thii"]
+_data = [Vector2(0, 0), 0.0, 12.712682, 0, 0, Vector2(0.17777777, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.1114955, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oxha2"]
+curve = SubResource("Curve_5thii")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m2va7"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 687.0
+spread = 180.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -20.000002
+linear_accel_max = 10.119998
+radial_accel_min = -41.280003
+radial_accel_max = 34.859997
+scale_min = 0.25
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_oxha2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8s360"]
+radius = 30.0
+
+[sub_resource type="Animation" id="Animation_4m3gn"]
+resource_name = "Die"
+length = 4.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2spnw"]
+_data = {
+&"Die": SubResource("Animation_4m3gn")
+}
+
+[node name="Rift" type="Node2D" unique_id=511157504]
+process_mode = 1
+visibility_layer = 8
+script = ExtResource("1_nba7m")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
+visibility_layer = 8
+material = ExtResource("2_nba7m")
+rotation = 1.5707964
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasGroup" unique_id=1893348930]
+amount = 10
+texture = ExtResource("4_cps04")
+randomness = 0.33
+process_material = SubResource("ParticleProcessMaterial_m2va7")
+
+[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1715680786]
+stream = ExtResource("13_t80xs")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1960739503]
+stream = ExtResource("13_t80xs")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1556360732]
+stream = ExtResource("13_t80xs")
+volume_db = -16.64
+max_distance = 200.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1496338513]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820379432]
+shape = SubResource("CircleShape2D_8s360")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1884077241]
+libraries/ = SubResource("AnimationLibrary_2spnw")
+
+[node name="SpawnCooldownTimer" type="Timer" parent="." unique_id=168949374]
+wait_time = 7.0
+
+[connection signal="timeout" from="SpawnCooldownTimer" to="." method="_on_attack_cooldown_timer"]

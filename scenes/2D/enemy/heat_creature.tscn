@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cupgid58skdja"]
 
-[ext_resource type="Script" uid="uid://b1ewj5hi6s4aq" path="res://scenes/2D/enemy.gd" id="1_tnt1p"]
+[ext_resource type="Script" uid="uid://c8uflge1p2bbi" path="res://scenes/2D/enemy/moving_enemy.gd" id="1_2xs52"]
 [ext_resource type="Material" uid="uid://cpvjju1mqbg1h" path="res://resources/thermal_imaging.tres" id="2_2xs52"]
 [ext_resource type="Texture2D" uid="uid://d1eqmjl128vnh" path="res://assets/textures/temp/heatbeast_body.png" id="3_kur5f"]
 [ext_resource type="Texture2D" uid="uid://1tbrxp5ug6t2" path="res://assets/textures/temp/heatbeast_upper_arm.png" id="4_oia7a"]
@@ -29,9 +29,7 @@ _data = {
 [node name="HeatCreature" type="Node2D" unique_id=511157504]
 process_mode = 1
 visibility_layer = 16
-script = ExtResource("1_tnt1p")
-movement_speed = 25.0
-affected_by = 1
+script = ExtResource("1_2xs52")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
 visibility_layer = 16
@@ -120,30 +118,28 @@ texture = ExtResource("9_xcgvg")
 position = Vector2(-0.05384648, 41.5)
 texture = ExtResource("10_632xl")
 
-[node name="WorldProjection" type="Node2D" parent="." unique_id=352708969]
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1715680786]
+[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1715680786]
 stream = ExtResource("4_tnt1p")
 volume_db = -16.64
 max_distance = 200.0
 
-[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1960739503]
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1960739503]
 stream = ExtResource("4_tnt1p")
 volume_db = -16.64
 max_distance = 200.0
 
-[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="WorldProjection" unique_id=1556360732]
+[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1556360732]
 stream = ExtResource("4_tnt1p")
 volume_db = -16.64
 max_distance = 200.0
 
-[node name="Area2D" type="Area2D" parent="WorldProjection" unique_id=1496338513]
+[node name="Area2D" type="Area2D" parent="." unique_id=1496338513]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldProjection/Area2D" unique_id=820379432]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820379432]
 shape = SubResource("CircleShape2D_t2dwb")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="WorldProjection" unique_id=1476885383]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1476885383]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1884077241]
 libraries/ = SubResource("AnimationLibrary_2spnw")
