@@ -1,7 +1,7 @@
+class_name Rift
 extends Enemy
 
 @export var spawnables:Array[PackedScene]
-
 
 
 func _on_spawn_cooldown_timer_timeout() -> void:

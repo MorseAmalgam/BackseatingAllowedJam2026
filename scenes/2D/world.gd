@@ -12,6 +12,18 @@ var WEAPONS = {
 
 @export var objectives:Array[MissionObjective] = []
 
+# Settings for map randomization. Tweak this if maps look or feel dumb
+@export_group("Map Randomization")
+@export var randomize_layout:bool = true
+@export var spawn_margin:float = 80
+@export var rift_min_distance_from_vessel:float = 300
+@export var rift_min_distance_between:float = 200
+@export var min_distance_from_boulders:float = 100
+
+const MAX_PLACEMENT_ATTEMPTS := 50
+# Keep spawns out from under the UI text (objectives list, command hint)
+const NO_SPAWN_RECTS:Array[Rect2] = [Rect2(0, 0, 620, 170), Rect2(0, 590, 640, 130)]
+
 @onready var _radar_window: Window = $RadarWindow
 @warning_ignore("unused_private_class_variable")
 @onready var vessel: Vessel = $Vessel
@@ -32,6 +44,9 @@ func _ready():
 	objectives.append(load("res://resources/objective/survive.gd").new())
 	for objective in objectives:
 		objective.init(self)
+
+	if randomize_layout:
+		_randomize_layout()
 	
 	_start_gameplay()
 	
@@ -122,3 +137,64 @@ func _on_received_fire_command(_from_username: String, info: TwitchCommandInfo, 
 	add_child(weapon_node)
 	
 	pass
+
+
+func _randomize_layout() -> void:
+	# Own RNG so the layout is repeatable on Retry without affecting other randomness
+	if ProgressManager.map_seed == 0:
+		ProgressManager.map_seed = randi()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = ProgressManager.map_seed
+
+	var bounds := Rect2(Vector2.ONE * spawn_margin, get_viewport_rect().size - Vector2.ONE * spawn_margin * 2)
+
+	var boulders:Array[Vector2] = []
+	var rifts:Array[Rift] = []
+	for child in get_children():
+		if child is Rift:
+			rifts.append(child)
+		elif child.has_node("NavigationObstacle2D"):
+			boulders.append(child.position)
+
+	# Ship first, anywhere not inside a boulder. Try MAX_PLACEMENT_ATTEMPTS times then give up
+	for _attempt in MAX_PLACEMENT_ATTEMPTS:
+		var point := _random_point(rng, bounds)
+		if _is_spawnable(point) && _is_clear(point, boulders, min_distance_from_boulders):
+			vessel.position = point
+			break
+
+	# Rifts away from the ship, each other, and boulders
+	# If no spot fits, the rift keeps its hand-placed position
+	var placed:Array[Vector2] = []
+	for rift in rifts:
+		for _attempt in MAX_PLACEMENT_ATTEMPTS:
+			var point := _random_point(rng, bounds)
+			if !_is_spawnable(point):
+				continue
+			if point.distance_to(vessel.position) < rift_min_distance_from_vessel:
+				continue
+			if !_is_clear(point, placed, rift_min_distance_between):
+				continue
+			if !_is_clear(point, boulders, min_distance_from_boulders):
+				continue
+			rift.position = point
+			break
+		placed.append(rift.position)
+
+
+func _random_point(rng:RandomNumberGenerator, bounds:Rect2) -> Vector2:
+	return Vector2(rng.randf_range(bounds.position.x, bounds.end.x), rng.randf_range(bounds.position.y, bounds.end.y))
+
+
+func _is_spawnable(point:Vector2) -> bool:
+	for rect in NO_SPAWN_RECTS:
+		if rect.has_point(point):
+			return false
+	return true
+
+
+func _is_clear(point:Vector2, others:Array[Vector2], min_distance:float) -> bool:
+	for other in others:
+		if point.distance_to(other) < min_distance:
+			return false
+	return true

@@ -42,6 +42,9 @@ func hide_menus() -> void:
 
 
 func navigate_to_screen(scene_path:String, force_reload:bool = false) -> void:
+	# Reset map seed if we're not reloading
+	if !force_reload: 
+		ProgressManager.map_seed = 0
 	# Disable pause so we can process the scene change.
 	hide_menus()
 	SceneLoader.change_scene(scene_path, force_reload)
@@ -51,8 +54,10 @@ func reload_current_scene() -> void:
 	# Used by Retry/Replay - reloads the level that is currently active.
 	navigate_to_screen(SceneLoader.current_scene_path, true)
 
+
 func show_how_to_play() -> void:
 	how_to_play.open()
+
 
 func show_mission_complete() -> void:
 	menu_enabled = false
