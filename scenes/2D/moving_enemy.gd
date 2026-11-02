@@ -7,7 +7,6 @@ extends Enemy
 @export var movement_speed:float = 10
 @onready var navigation_agent:NavigationAgent2D = $NavigationAgent2D
 @onready var attack_sound_player:AudioStreamPlayer2D = $AttackAudioPlayer
-@onready var move_sound_player:AudioStreamPlayer2D = $MoveAudioPlayer
 
 
 var target:Node2D

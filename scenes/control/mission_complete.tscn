@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhiekpljsono1" path="res://scenes/control/mission_complete.gd" id="1_27ydx"]
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="2_2ucoc"]
+[ext_resource type="Script" uid="uid://bfxugf5kjf3mg" path="res://scenes/control/button_juice.gd" id="3_infrd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6plf"]
 bg_color = Color(0.11557197, 0.20184782, 0.10984608, 1)
@@ -63,21 +64,37 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2ucoc")
 text = "Replay Level"
 
+[node name="ButtonJuicerEnhancer" type="Node" parent="Panel/MarginContainer/VBoxContainer/ReplayLevelButton" unique_id=1040972934]
+script = ExtResource("3_infrd")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
+
 [node name="ReturnToMapButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=353144818]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2ucoc")
 disabled = true
 text = "Return To Map"
 
+[node name="ButtonJuicerEnhancer" type="Node" parent="Panel/MarginContainer/VBoxContainer/ReturnToMapButton" unique_id=1523468809]
+script = ExtResource("3_infrd")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
+
 [node name="QuitToTitleScreenButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1406644814]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2ucoc")
 text = "Return To Title Screen"
 
+[node name="ButtonJuicerEnhancer" type="Node" parent="Panel/MarginContainer/VBoxContainer/QuitToTitleScreenButton" unique_id=1548905112]
+script = ExtResource("3_infrd")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
+
 [node name="QuitToDesktopButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=738098249]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2ucoc")
 text = "Quit To Desktop"
+
+[node name="ButtonJuicerEnhancer" type="Node" parent="Panel/MarginContainer/VBoxContainer/QuitToDesktopButton" unique_id=40282688]
+script = ExtResource("3_infrd")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ReplayLevelButton" to="." method="_on_replay_level_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]

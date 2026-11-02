@@ -11,8 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyluobuxo8fn" path="res://scenes/2D/obstacle/boulder02.tscn" id="7_1ly8h"]
 [ext_resource type="PackedScene" uid="uid://dnbpmhnmf2f31" path="res://scenes/2D/obstacle/boulder03.tscn" id="8_ahorp"]
 [ext_resource type="PackedScene" uid="uid://bnknw3tc00rrd" path="res://scenes/2D/enemy/rift.tscn" id="11_ahorp"]
-[ext_resource type="PackedScene" uid="uid://cupgid58skdja" path="res://scenes/2D/enemy/heat_creature.tscn" id="12_nft3w"]
-[ext_resource type="PackedScene" uid="uid://d1uevkt70x0i2" path="res://scenes/2D/enemy/squid.tscn" id="13_r7d10"]
+[ext_resource type="AudioStream" uid="uid://dg84qrnjyg17y" path="res://assets/audio/lock_on.wav" id="12_nft3w"]
 
 [sub_resource type="Resource" id="Resource_h0unw"]
 script = ExtResource("3_lo0i8")
@@ -38,6 +37,7 @@ script = ExtResource("1_lvx6v")
 objectives = Array[ExtResource("2_h0unw")]([SubResource("Resource_h0unw")])
 
 [node name="RadarWindow" parent="." unique_id=826591826 instance=ExtResource("5_sdurb")]
+transparent_bg = true
 visible = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=220804953]
@@ -179,8 +179,12 @@ autowrap_mode = 0
 [node name="Rift" parent="." unique_id=511157504 instance=ExtResource("11_ahorp")]
 position = Vector2(511, 178)
 
-[node name="HeatCreature" parent="." unique_id=1610203839 instance=ExtResource("12_nft3w")]
-position = Vector2(1089, 530)
+[node name="Rift2" parent="." unique_id=1805990407 instance=ExtResource("11_ahorp")]
+position = Vector2(1204, 70)
 
-[node name="Squid" parent="." unique_id=2072341095 instance=ExtResource("13_r7d10")]
-position = Vector2(857, 539)
+[node name="Rift3" parent="." unique_id=28229178 instance=ExtResource("11_ahorp")]
+position = Vector2(939, 498)
+
+[node name="LockOnSound" type="AudioStreamPlayer" parent="." unique_id=278346647]
+stream = ExtResource("12_nft3w")
+volume_db = -4.0

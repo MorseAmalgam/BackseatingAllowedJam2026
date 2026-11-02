@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c45hsiy22cg7u" path="res://scenes/control/tutorial.gd" id="1_ocwtv"]
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="2_bt04i"]
+[ext_resource type="Script" uid="uid://bfxugf5kjf3mg" path="res://scenes/control/button_juice.gd" id="3_chiqy"]
 
 [node name="Tutorial" type="Control" unique_id=1948626684]
 visible = false
@@ -74,3 +75,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bt04i")
 theme_override_font_sizes/font_size = 16
 text = "Start The Mission!"
+
+[node name="ButtonJuicerEnhancer" type="Node" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" unique_id=1367762864]
+script = ExtResource("3_chiqy")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"

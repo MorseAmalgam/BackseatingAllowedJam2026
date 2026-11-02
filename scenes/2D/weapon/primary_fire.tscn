@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://csbn2pcdne0xm"]
 
 [ext_resource type="Script" uid="uid://jxi7f5vrxu6i" path="res://scenes/2D/weapon/primary_fire_weapon.gd" id="1_wxj3l"]
-[ext_resource type="AudioStream" uid="uid://m6hosjova8p2" path="res://assets/audio/temp/snd_explosion.wav" id="2_57v5n"]
-[ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="3_g7fsg"]
+[ext_resource type="AudioStream" uid="uid://ifugp4n747jf" path="res://assets/audio/primary_fire.wav" id="2_wxj3l"]
+[ext_resource type="Texture2D" uid="uid://eownnexbio3d" path="res://assets/textures/reticles/primary.png" id="3_wxj3l"]
 
 [sub_resource type="Animation" id="Animation_iiofe"]
 resource_name = "Fire"
@@ -77,7 +77,7 @@ radius = 20.0
 [node name="PrimaryFire" type="Node2D" unique_id=487617637]
 script = ExtResource("1_wxj3l")
 deploy_speed = 2.0
-fire_sound = ExtResource("2_57v5n")
+fire_sound = ExtResource("2_wxj3l")
 damage_type = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1039010484]
@@ -85,9 +85,9 @@ libraries/ = SubResource("AnimationLibrary_lsqhv")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1727550960]
 offset_left = -12.0
-offset_top = 12.0
+offset_top = 18.0
 offset_right = 12.0
-offset_bottom = 16.0
+offset_bottom = 22.0
 theme_override_styles/background = SubResource("StyleBoxFlat_t2dwb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m2va7")
 max_value = 1.0
@@ -95,8 +95,8 @@ show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606916875]
 modulate = Color(0, 1, 0, 1)
-scale = Vector2(0.15873016, 0.15873015)
-texture = ExtResource("3_g7fsg")
+texture_filter = 1
+texture = ExtResource("3_wxj3l")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=590783421]
 monitoring = false
