@@ -47,6 +47,8 @@ func _process(delta: float) -> void:
 
 
 func _on_attack_cooldown_timer() -> void:
+	if dying:
+		return
 	if target.has_method("take_damage"):
 		attack_sound_player.play()
 		target.take_damage(attack_damage)

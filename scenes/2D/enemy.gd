@@ -7,14 +7,12 @@ var current_hitpoints:float = max_hitpoints
 @onready var collider:Area2D = $Area2D
 @onready var death_sound_player:AudioStreamPlayer2D = $DeathAudioPlayer
 
-
 var dying:bool = false
 
-
 func _ready() -> void:
+	current_hitpoints = max_hitpoints
 	# Connect to world to recieve attacks
 	get_parent().on_weapon_fire.connect(_process_attack)
-
 
 func _process_attack(area_affected:Area2D, damage_amount:float, damage_type:Constants.WeaponTypes) -> void:
 	# Ignore damage if it's the wrong type
