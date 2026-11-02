@@ -57,7 +57,7 @@ text = "[font_size=24]HOW TO PLAY[/font_size]
 [color=yellow]STREAMER[/color]
 - Fly with WASD. Drag the radar window over creatures.
 - Keys [color=cyan]1-4[/color] switch radar filters.
-- Aim at a target and read its [color=cyan]RGN[/color] numbers. 
+- Aim at a target and read its [color=cyan]<x, y>[/color] numbers. 
 
 [color=yellow]CHAT[/color]
 - [color=cyan]!fire x y[/color] shoots a creature.
