@@ -19,6 +19,8 @@ var WEAPONS = {
 @export var rift_min_distance_from_vessel:float = 300
 @export var rift_min_distance_between:float = 200
 @export var min_distance_from_boulders:float = 100
+@export var randomize_boulders:bool = true
+@export var boulder_min_distance_between:float = 120
 
 const MAX_PLACEMENT_ATTEMPTS := 50
 # Keep spawns out from under the UI text (objectives list, command hint)
@@ -152,14 +154,26 @@ func _randomize_layout() -> void:
 	var bounds := Rect2(Vector2.ONE * spawn_margin, get_viewport_rect().size - Vector2.ONE * spawn_margin * 2)
 
 	var boulders:Array[Vector2] = []
+	var boulder_nodes:Array[Node2D] = []
 	var rifts:Array[Rift] = []
 	for child in get_children():
 		if child is Rift:
 			rifts.append(child)
 		elif child.has_node("NavigationObstacle2D"):
-			boulders.append(child.position)
+			boulder_nodes.append(child)
 
-	# Ship first, anywhere not inside a boulder. Try MAX_PLACEMENT_ATTEMPTS times then give up
+	# Boulders first; the ship and rifts are placed around them.
+	# If no spot fits, a boulder keeps its hand-placed position.
+	for boulder in boulder_nodes:
+		if randomize_boulders:
+			for _attempt in MAX_PLACEMENT_ATTEMPTS:
+				var point := _random_point(rng, bounds)
+				if _is_spawnable(point) && _is_clear(point, boulders, boulder_min_distance_between):
+					boulder.position = point
+					break
+		boulders.append(boulder.position)
+
+	# Ship next, anywhere not inside a boulder. Try MAX_PLACEMENT_ATTEMPTS times then give up
 	for _attempt in MAX_PLACEMENT_ATTEMPTS:
 		var point := _random_point(rng, bounds)
 		if _is_spawnable(point) && _is_clear(point, boulders, min_distance_from_boulders):
@@ -183,6 +197,10 @@ func _randomize_layout() -> void:
 			rift.position = point
 			break
 		placed.append(rift.position)
+
+	if randomize_boulders:
+		# Re-carve the navigation mesh around the boulders' new positions
+		$NavigationRegion2D.bake_navigation_polygon()
 
 
 func _random_point(rng:RandomNumberGenerator, bounds:Rect2) -> Vector2:
