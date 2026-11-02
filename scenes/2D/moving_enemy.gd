@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 	global_position = global_position.move_toward(global_position + new_velocity, movement_delta)
 	if (head_node != null):
 		head_node.look_at(target.position)
-	
 
 
 func _on_attack_cooldown_timer() -> void:
