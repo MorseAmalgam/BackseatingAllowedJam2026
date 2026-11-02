@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	
 	velocity += added_velocity.normalized() * acceleration * delta
-	velocity.limit_length(max_velocity)
+	velocity = velocity.limit_length(max_velocity)
 	
 	position += velocity * delta
 	velocity *= friction
