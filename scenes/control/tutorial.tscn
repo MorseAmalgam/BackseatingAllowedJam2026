@@ -51,20 +51,19 @@ theme_override_fonts/bold_font = ExtResource("2_bt04i")
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[b]HOW TO PLAY[/b]
+text = "[font_size=24]HOW TO PLAY[/font_size]
 
-[b]STREAMER[/b]
-- Fly the ship with the arrow keys or WASD.
-- Drag the radar window over the action. Creatures only show on the radar.
-- Press [b]4[/b] for the thermal scan.
-- Put the reticle on a creature and read the [b]RGN: <x, y>[/b] numbers.
+[color=yellow]STREAMER[/color]
+- Fly with WASD. Drag the radar window over creatures.
+- Keys [color=cyan]1-4[/color] switch radar filters.
+- Aim at a target and read its [color=cyan]RGN[/color] numbers. 
 
-[b]CHAT[/b]
-- Fire a weapon with [b]!fire x y[/b], using the RGN numbers. It lands after 2 seconds.
-- When the extraction code appears, type it [b]one character per message[/b], in order.
-- Work together! If you input the wrong value, your team must start over!
+[color=yellow]CHAT[/color]
+- [color=cyan]!fire x y[/color] shoots a creature.
+- [color=cyan]!laser x y[/color] closes a rift.
+- At extraction, type the code [color=cyan]one character per message[/color].
 
-If the creature reaches you, the ship will take damage, which will destroy the ship. Keep the ship alive. Extract to win."
+Close the rifts, keep the ship alive, then extract."
 fit_content = true
 scroll_active = false
 
