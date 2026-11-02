@@ -4,7 +4,8 @@
 [ext_resource type="Material" uid="uid://bvpsk8vs31wid" path="res://resources/gravitational.tres" id="2_lbtbb"]
 [ext_resource type="Texture2D" uid="uid://cydilebxt7nom" path="res://assets/textures/squid/body.png" id="3_l651r"]
 [ext_resource type="Texture2D" uid="uid://kjrem4api7s2" path="res://assets/textures/squid/head.png" id="4_b42wb"]
-[ext_resource type="AudioStream" uid="uid://b04crvcruuk1m" path="res://assets/audio/temp/imp death 2.wav" id="5_4c0s0"]
+[ext_resource type="AudioStream" uid="uid://blue5wlwcdio4" path="res://assets/audio/creature_attack.wav" id="5_lbtbb"]
+[ext_resource type="AudioStream" uid="uid://d0m7160ice6it" path="res://assets/audio/creature_death02.wav" id="6_lbtbb"]
 
 [sub_resource type="Gradient" id="Gradient_7vemg"]
 offsets = PackedFloat32Array(0.58247423, 0.6494845, 1)
@@ -37,6 +38,7 @@ visibility_layer = 4
 script = ExtResource("1_j6gfm")
 tentacles = [NodePath("CanvasGroup/Tentacle01"), NodePath("CanvasGroup/Tentacle02"), NodePath("CanvasGroup/Tentacle03"), NodePath("CanvasGroup/Tentacle04")]
 head_node = NodePath("CanvasGroup/Head")
+movement_speed = 20.0
 affected_by = 3
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1100960376]
@@ -88,17 +90,11 @@ texture_mode = 2
 joint_mode = 2
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1715680786]
-stream = ExtResource("5_4c0s0")
-volume_db = -16.64
+stream = ExtResource("5_lbtbb")
 max_distance = 200.0
 
 [node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1960739503]
-stream = ExtResource("5_4c0s0")
-volume_db = -16.64
-max_distance = 200.0
-
-[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1556360732]
-stream = ExtResource("5_4c0s0")
+stream = ExtResource("6_lbtbb")
 volume_db = -16.64
 max_distance = 200.0
 

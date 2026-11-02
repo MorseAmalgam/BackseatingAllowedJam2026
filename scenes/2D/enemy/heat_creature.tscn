@@ -4,7 +4,6 @@
 [ext_resource type="Material" uid="uid://cpvjju1mqbg1h" path="res://resources/thermal_imaging.tres" id="2_2xs52"]
 [ext_resource type="Texture2D" uid="uid://d1eqmjl128vnh" path="res://assets/textures/temp/heatbeast_body.png" id="3_kur5f"]
 [ext_resource type="Texture2D" uid="uid://1tbrxp5ug6t2" path="res://assets/textures/temp/heatbeast_upper_arm.png" id="4_oia7a"]
-[ext_resource type="AudioStream" uid="uid://b04crvcruuk1m" path="res://assets/audio/temp/imp death 2.wav" id="4_tnt1p"]
 [ext_resource type="Texture2D" uid="uid://bkj7memqvf5xt" path="res://assets/textures/temp/heatbeast_lower_arm.png" id="5_2xs52"]
 [ext_resource type="Texture2D" uid="uid://b4dyyktcs7ar6" path="res://assets/textures/temp/heatbeast_hand.png" id="6_a84w5"]
 [ext_resource type="Texture2D" uid="uid://dunlchnwt5i12" path="res://assets/textures/temp/heatbeast_upper_leg.png" id="7_2xs52"]
@@ -13,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://065l1nlbl1w5" path="res://assets/textures/temp/heatbeast_foot.png" id="9_wmwab"]
 [ext_resource type="Texture2D" uid="uid://c3ysodbd2axgl" path="res://assets/textures/temp/heatbeast_tail01.png" id="9_xcgvg"]
 [ext_resource type="Texture2D" uid="uid://bcpjvf7jipu0x" path="res://assets/textures/temp/heatbeast_tail02.png" id="10_632xl"]
+[ext_resource type="AudioStream" uid="uid://blue5wlwcdio4" path="res://assets/audio/creature_attack.wav" id="13_a84w5"]
+[ext_resource type="AudioStream" uid="uid://vagap31nkft2" path="res://assets/audio/creature_death01.wav" id="14_a84w5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2dwb"]
 radius = 50.0
@@ -122,17 +123,12 @@ position = Vector2(-0.05384648, 41.5)
 texture = ExtResource("10_632xl")
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1715680786]
-stream = ExtResource("4_tnt1p")
+stream = ExtResource("13_a84w5")
 volume_db = -16.64
 max_distance = 200.0
 
 [node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1960739503]
-stream = ExtResource("4_tnt1p")
-volume_db = -16.64
-max_distance = 200.0
-
-[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1556360732]
-stream = ExtResource("4_tnt1p")
+stream = ExtResource("14_a84w5")
 volume_db = -16.64
 max_distance = 200.0
 

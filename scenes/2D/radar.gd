@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 	var target_position = Vector2(window_pos) - Vector2(DisplayServer.window_get_position(0))
 	if ($Camera2D.position.distance_to(target_position) > 0.01):
 		$Camera2D.position = target_position
-		$Camera2D/ScannerUI/CoordinateIndicator.text = "TRIANGULATING..."
+		$Camera2D/ScannerUI/CoordinateIndicator.text = "<---, --->"
 		$TriangulationTimer.start()
 	
 	# STOP HERE if the game is paused - screen movement is only for the purposes of getting it out of the way
@@ -74,9 +74,10 @@ func deactivate() -> void:
 
 func _update_scan_indicators(active:int)->void:
 	canvas_cull_mask = 1 + (1 << active)
+	$ScanModeAudioPlayer.play()
 	var scans:Array = $Camera2D/ScannerUI/ScanIndicators.get_children()
 	for index in range(scans.size()):
-		scans[index].modulate = Color.WHITE if index+1 == active else Color.BLACK
+		scans[index].modulate = Color.WHITE if index+1 == active else Color.TRANSPARENT
 
 
 func _on_triangulation_timer_timeout() -> void:
@@ -87,5 +88,5 @@ func _on_triangulation_timer_timeout() -> void:
 		Vector2(DisplayServer.window_get_position(0)) + 
 		Vector2(DisplayServer.window_get_size(get_window_id()) / 2.0)
 		)
-	$Camera2D/ScannerUI/CoordinateIndicator.text = "RGN: <%d, %d>" % [pos.x, pos.y]
+	$Camera2D/ScannerUI/CoordinateIndicator.text = "<%d, %d>" % [pos.x, pos.y]
 	pass

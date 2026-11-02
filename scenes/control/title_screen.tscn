@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpe1thdov6wiy" path="res://scenes/control/title_screen.gd" id="1_a5uwb"]
 [ext_resource type="Resource" uid="uid://dbybhyrt4o2no" path="res://twitch_oauth_token.tres" id="2_nrjsf"]
 [ext_resource type="FontFile" uid="uid://b22kcvnxivftb" path="res://assets/fonts/Bacteria 12.ttf" id="3_drqhl"]
+[ext_resource type="Script" uid="uid://bfxugf5kjf3mg" path="res://scenes/control/button_juice.gd" id="4_ss1ww"]
 
 [sub_resource type="Gradient" id="Gradient_nrjsf"]
 colors = PackedColorArray(0.3647059, 0.39607844, 0.19607843, 1, 0.21665812, 0.23721334, 0.10515887, 1)
@@ -36,14 +37,15 @@ texture = SubResource("GradientTexture2D_t2dwb")
 
 [node name="Label" type="Label" parent="." unique_id=85500924]
 layout_mode = 0
-offset_left = 203.99998
-offset_top = 149.0
-offset_right = 1044.0
-offset_bottom = 237.0
+offset_left = 154.0
+offset_top = 139.0
+offset_right = 1162.0
+offset_bottom = 315.0
 rotation = -0.11028302
 theme_override_fonts/font = ExtResource("3_drqhl")
-theme_override_font_sizes/font_size = 64
-text = "Wow! Such game!"
+theme_override_font_sizes/font_size = 128
+text = "EXO-RECON"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=770372243]
 layout_mode = 1
@@ -62,10 +64,15 @@ grow_vertical = 2
 [node name="StartGameButton" type="Button" parent="VBoxContainer" unique_id=636068639]
 unique_name_in_owner = true
 layout_mode = 2
+offset_transform_enabled = true
 theme_override_fonts/font = ExtResource("3_drqhl")
 disabled = true
 text = "Start Game
 "
+
+[node name="ButtonJuicerEnhancer" type="Node" parent="VBoxContainer/StartGameButton" unique_id=23375684]
+script = ExtResource("4_ss1ww")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
 
 [node name="Exit Button" type="Button" parent="VBoxContainer" unique_id=781231832]
 unique_name_in_owner = true
@@ -73,6 +80,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_drqhl")
 text = "Exit Game
 "
+
+[node name="ButtonJuicerEnhancer" type="Node" parent="VBoxContainer/Exit Button" unique_id=1511619552]
+script = ExtResource("4_ss1ww")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
 
 [node name="VerificationUI" type="Control" parent="." unique_id=1849347524]
 unique_name_in_owner = true
@@ -140,6 +151,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_drqhl")
 disabled = true
 text = "Open Link In Browser"
+
+[node name="ButtonJuicerEnhancer" type="Node" parent="VerificationUI/OpenBrowserButton" unique_id=2121798971]
+script = ExtResource("4_ss1ww")
+metadata/_custom_type_script = "uid://bfxugf5kjf3mg"
 
 [node name="VerificationCodeField" type="LineEdit" parent="VerificationUI" unique_id=2058401005]
 unique_name_in_owner = true

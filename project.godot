@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="BackseatingAllowed2026"
+config/name="EXO-RECON"
 run/main_scene="uid://syfdx4y1kdfi"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

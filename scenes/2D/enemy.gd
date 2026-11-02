@@ -34,8 +34,6 @@ func _process_attack(area_affected:Area2D, damage_amount:float, damage_type:Cons
 		dying = true
 		# just stop everything, he's already dead
 		set_process(false)
-		$AttackCooldownTimer.stop()
-		$RecalculateNavTimer.stop() 
 		# Remove collider from the real world
 		collider.queue_free()
 		death_sound_player.play()

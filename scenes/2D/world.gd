@@ -116,6 +116,7 @@ func _on_received_fire_command(_from_username: String, info: TwitchCommandInfo, 
 	if (WEAPONS.has(weapon_command)):
 		weapon_node = WEAPONS[weapon_command].instantiate()
 	
+	$LockOnSound.play()
 	# Our parameters should be X and Y coordinates
 	weapon_node.position = Vector2(info.arguments[0].to_float(), info.arguments[1].to_float())
 	add_child(weapon_node)

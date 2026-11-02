@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://p87hq747lc2"]
 
 [ext_resource type="Script" uid="uid://wx5yi13h6mgh" path="res://scenes/2D/weapon/laser_weapon.gd" id="1_sk3lq"]
-[ext_resource type="Texture2D" uid="uid://ce2fh3wdb5c8c" path="res://assets/textures/reticle.svg" id="2_ahx3m"]
+[ext_resource type="Texture2D" uid="uid://cm10o8ycc5qxv" path="res://assets/textures/reticles/laser.png" id="2_ahx3m"]
+[ext_resource type="AudioStream" uid="uid://djpj7twq13cgk" path="res://assets/audio/laser_fire.wav" id="2_vsmit"]
 
 [sub_resource type="Animation" id="Animation_iiofe"]
 resource_name = "Fire"
@@ -76,6 +77,7 @@ radius = 20.0
 [node name="Laser" type="Node2D" unique_id=452371053]
 script = ExtResource("1_sk3lq")
 deploy_speed = 5.0
+fire_sound = ExtResource("2_vsmit")
 damage_type = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1635692738]
@@ -83,9 +85,9 @@ libraries/ = SubResource("AnimationLibrary_vsmit")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=358483284]
 offset_left = -12.0
-offset_top = 12.0
+offset_top = 13.0
 offset_right = 12.0
-offset_bottom = 16.0
+offset_bottom = 17.0
 theme_override_styles/background = SubResource("StyleBoxFlat_02eub")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5a2q4")
 max_value = 1.0
@@ -93,7 +95,7 @@ show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1781967262]
 modulate = Color(0, 1, 0, 1)
-scale = Vector2(0.15873016, 0.15873015)
+texture_filter = 1
 texture = ExtResource("2_ahx3m")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=62508909]

@@ -31,8 +31,6 @@ func _process(delta: float) -> void:
 	
 	# LAZZZYYYY
 	position = Vector2(clampf(position.x, 40, 1240), clampf(position.y, 40, 680))
-	
-	pass
 
 
 func take_damage(amount:float) -> void:
