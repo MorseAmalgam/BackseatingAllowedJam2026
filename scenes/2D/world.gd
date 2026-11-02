@@ -31,6 +31,7 @@ const NO_SPAWN_RECTS:Array[Rect2] = [Rect2(0, 0, 620, 170), Rect2(0, 590, 640, 1
 signal on_weapon_fire(area:Area2D, weapon:Constants.WeaponTypes)
 
 func _ready():
+	
 	_radar_window.world_2d = get_window().world_2d
 	# TODO: Enable menu and chat interaction after anything else 
 	
@@ -45,6 +46,8 @@ func _ready():
 	for objective in objectives:
 		objective.init(self)
 
+	$UI/MissionObjectivesHeader.text = "MISSION %d OBJECTIVES:" % ProgressManager.current_level
+	_apply_level_settings()
 	if randomize_layout:
 		_randomize_layout()
 	
@@ -198,3 +201,17 @@ func _is_clear(point:Vector2, others:Array[Vector2], min_distance:float) -> bool
 		if point.distance_to(other) < min_distance:
 			return false
 	return true
+
+
+func _apply_level_settings() -> void:
+	var settings := ProgressManager.get_level_settings()
+	var rift_count := 0
+	for child in get_children():
+		if child is Rift:
+			rift_count += 1
+			if rift_count > settings.max_rifts:
+				# Remove now so _randomize_layout doesn't see it
+				remove_child(child)
+				child.queue_free()
+			else:
+				child.set_spawn_interval(settings.rift_spawn_interval)

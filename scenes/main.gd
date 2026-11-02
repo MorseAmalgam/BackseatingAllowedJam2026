@@ -21,6 +21,7 @@ func _ready() -> void:
 	how_to_play = preload("res://scenes/control/tutorial.tscn").instantiate()
 	add_child(how_to_play)
 
+
 func _process(_delta: float) -> void:
 	# Toggle for our menu
 	if menu_enabled && Input.is_action_just_pressed("ui_cancel"):
@@ -45,6 +46,9 @@ func navigate_to_screen(scene_path:String, force_reload:bool = false) -> void:
 	# Reset map seed if we're not reloading
 	if !force_reload: 
 		ProgressManager.map_seed = 0
+	# Back to the title screen starts the campaign over
+	if scene_path == InterfaceScreens.TITLE:
+		ProgressManager.current_level = 1		
 	# Disable pause so we can process the scene change.
 	hide_menus()
 	SceneLoader.change_scene(scene_path, force_reload)

@@ -5,8 +5,10 @@ func _on_replay_level_button_pressed() -> void:
 	$"/root/Main".reload_current_scene()
 
 
-func _on_return_to_map_button_pressed() -> void:
-	$"/root/Main".navigate_to_screen(Main.InterfaceScreens.MAP)
+func _on_next_mission_button_pressed() -> void:
+	ProgressManager.current_level += 1
+	ProgressManager.map_seed = 0  # new level, new layout
+	$"/root/Main".reload_current_scene()
 
 
 func _on_quit_to_title_screen_button_pressed() -> void:
