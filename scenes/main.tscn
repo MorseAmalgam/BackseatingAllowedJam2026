@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dai2m18txbsl7" path="res://scenes/control/menu.tscn" id="16_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://c47vf3csq3tot" path="res://scenes/control/mission_complete.tscn" id="17_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://c2rpmdhenrp3s" path="res://scenes/control/mission_failed.tscn" id="18_0ld40"]
-[ext_resource type="AudioStream" uid="uid://chkn6b2nvis15" path="res://assets/audio/ExoRecon.mp3" id="19_0ld40"]
+[ext_resource type="AudioStream" uid="uid://mr6xvpkx8bib" path="res://assets/audio/Exo-Recon Extended.mp3" id="19_0ld40"]
 
 [sub_resource type="Resource" id="Resource_c2ibq"]
 script = ExtResource("3_muem4")
